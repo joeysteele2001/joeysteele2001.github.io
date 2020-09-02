@@ -1,0 +1,19 @@
+title: Joey Steele's Website
+description: >- # this means to ignore newlines until "baseurl:"
+  Joey Steele's website.
+baseurl: ""
+url: "joeysteele2001.github.io"
+github_username: joeysteele2001
+
+exclude:
+  - README.md
+  - .sass-cache/
+  - .jekyll-cache/
+  - gemfiles/
+  - Gemfile
+  - Gemfile.lock
+  - node_modules/
+  - vendor/bundle/
+  - vendor/cache/
+  - vendor/gems/
+  - vendor/ruby/
