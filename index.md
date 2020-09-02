@@ -1,5 +1,4 @@
 ---
-layout: default
 title: Joey Steele
 subtitle: Home
 ---

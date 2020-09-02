@@ -5,6 +5,12 @@ baseurl: ""
 url: "joeysteele2001.github.io"
 github_username: joeysteele2001
 
+defaults:
+  - scope:
+      path: ""
+    values:
+      layout: "default"
+
 exclude:
   - README.md
   - CNAME
