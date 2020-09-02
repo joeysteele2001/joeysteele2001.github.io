@@ -7,10 +7,12 @@
         <link rel="stylesheet" href="{{ site.baseurl }}/assets/css/style.css">
     </head>
     <body>
-        <h1 class="title">{{ page.title }}</h1>
-        {% if page.subtitle != "" and page.subtitle != nil %}
-        <h2 class="subtitle">{{ page.subtitle }}</h2>
-        {% endif %}
+        <hgroup class="title-group">
+            <h1 class="title">{{ page.title }}</h1>
+            {% if page.subtitle != "" and page.subtitle != nil %}
+            <h2 class="subtitle">{{ page.subtitle }}</h2>
+            {% endif %}
+        </hgroup>
         {{ content }}
     </body>
 </html>
