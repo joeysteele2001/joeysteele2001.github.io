@@ -8,6 +8,7 @@ github_username: joeysteele2001
 exclude:
   - README.md
   - CNAME
+  - Makefile
   - .sass-cache/
   - .jekyll-cache/
   - gemfiles/
