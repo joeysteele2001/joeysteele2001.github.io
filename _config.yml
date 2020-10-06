@@ -20,6 +20,8 @@ markdown: kramdown
 kramdown:
   math_engine: katex
 
+highlighter: rouge
+
 exclude:
   - README.md
   - CNAME
