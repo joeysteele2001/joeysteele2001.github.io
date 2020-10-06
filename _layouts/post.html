@@ -6,6 +6,6 @@ layout: default
     {% if page.subtitle != "" and page.subtitle != nil %}
     <h2 class="subtitle">{{ page.subtitle }}</h2>
     {% endif %}
-    <p>{{ page.date | date_to_string }} | {{ page.author }}</p>
+    <p class="bibliographic">{{ page.date | date_to_string }} | {{ page.author }}</p>
 </header>
 {{ content }}
