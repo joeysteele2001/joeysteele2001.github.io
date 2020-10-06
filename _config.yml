@@ -16,6 +16,10 @@ defaults:
     values:
       layout: "default"
 
+markdown: kramdown
+kramdown:
+  math_engine: katex
+
 exclude:
   - README.md
   - CNAME
