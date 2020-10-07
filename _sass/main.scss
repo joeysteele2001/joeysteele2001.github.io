@@ -50,6 +50,11 @@ body {
     max-width: 90%;
 }
 
+article.blog-post {
+    max-width: 60rem;
+    margin: auto;
+}
+
 h1, h2, h3, h4, h5, h6 {
     line-height: 1.2;
 }
@@ -68,7 +73,6 @@ a:hover {
 }
 
 .bibliographic {
-    font-style: italic;
     color: var(--text-color-secondary);
 }
 

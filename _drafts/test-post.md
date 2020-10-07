@@ -6,8 +6,6 @@ math: true
 
 My first test post.
 
-**TODO: Make code look better! Especially in light mode!**
-
 ## Hello world
 
 This is a test post.
