@@ -39,3 +39,43 @@ As someone who's dealt with a fair amount of code, I know that the two concerns 
 I should be able to specify a document's formatting once, and have the content automatically conform to it.
 
 ## Documents as Code
+
+Like a codebase, a document is a living, breathing thing.
+It organically evolves as new things are added, old things are improved, and mistakes are fixed.
+Eventually, the document is ready to be released to its audience, so it is transformed from its original source format into one that can be easily consumed.
+
+That's right.
+A document is very much like a piece of software.
+So many principles that apply to the creation software can *also* apply to the creation of a document!
+
+* Don't Repeat Yourself
+* Separation of concerns (modularity)
+* Abstraction
+* Version control
+
+I think you get the point.
+So, how can we go about treating our documents as code?
+
+Why not write them in a specialized language?
+It may not be a typical imperative programming style, but we are still ultimately giving a computer pre-planned instructions on what to do.
+Well, there are many of these specialized languages.
+
+TeX, LaTeX, and their offspring are hugely popular in academia, especially fields that use math a lot.
+These languages are known for beautifully typesetting text, including equations, into a printed format.
+HTML and CSS are, of course, languages designed for document content (plus structure) and formatting, specifically for the web.
+Markdown has become an increasingly popular choice due to its ease of use and minimal syntax.
+Though intended to be compiled into HTML, people have been able to transform Markdown into LaTeX, PDFs, Word documents, rich text documents, and many other formats.
+
+## Why a Webpage?
+
+So, I mentioned (La)TeX is good at printed media, which is exactly what a resume is.
+Why didn't I go down that route?
+After all, there are many people that do exactly that!
+
+Well...
+I'm not great a LaTeX.
+I'm even worse at customizing its formatting.
+And frankly, despite its positive results, the language and toolchain feels quite archaic to me.
+I'm sure there are ways to make it less painful, but it's just not as easy as making a website.
+And, after all, this is just an experiment!
+My handy `.docx` file still sits, waiting to be loved again.
