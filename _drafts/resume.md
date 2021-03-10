@@ -79,3 +79,116 @@ And frankly, despite its positive results, the language and toolchain feels quit
 I'm sure there are ways to make it less painful, but it's just not as easy as making a website.
 And, after all, this is just an experiment!
 My handy `.docx` file still sits, waiting to be loved again.
+
+## The Process
+
+Let's talk through how I initially converted my resume from a Word document into an HTML file and CSS file!
+In short, I hand-wrote the entire HTML file, splitting everything into appropriate and logical sections.
+Then, I added CSS styling, which included adding some `id` and `class` attributes to some of the HTML tags.
+
+### The Content: HTML
+
+My HTML file was structured pretty normally.
+Inside of the `body`, the structure essentially looked like this:
+
+```html
+<body>
+    <article>
+        <header> [...] </header>
+        <main> [...] </main>
+    </article>
+</body>
+```
+
+I tried to be a *decent* user of HTML5 and put the actual main content into an `article`. Then I split the resume into two parts: the `header` and the `main` content.
+Inside the `header` is the frontmatter of the resume: my name and contact information.
+
+The rest of my resume lives in `main`, with this general structure:
+
+```html
+<main>
+    <section class="edu"> [...] </section>
+    <section class="skills"> [...] </section>
+    <section class="projects"> [...] </section>
+    [...]
+</main>
+```
+
+Each section of my resume is (fittingly) in a `section` tag.
+The section heading and content live within.
+
+Now, there were two types of sections in my resume: "dated" and "listed".
+
+#### Dated sections
+
+The "dated" items are the typical things that have a title, date, and additional information in bullets.
+Projects, degrees, and prior work are good examples of these items.
+
+The structure of a dated section looks like this:
+
+```html
+<section class="projects">
+    <h2>Projects</h2>
+    <section class="resitem-dated">
+        <div class="resitem-info">
+            <div class=resitem-title>Cool Project Name</div>
+            <div class=resitem-location>Null Island</div>
+            <div class=resitem-date>January 1970</div>
+        </div>
+
+        <ul>
+            <li>Information about this cool project.</li>
+            <li>Another bit of information.</li>
+            [...]
+        </ul>
+    </section>
+
+    [...]
+</section>
+```
+
+The heading comes first.
+It's an `h2` tag so that the `h1` tag can hold the title of the page (in this case, my name).
+Then come one or more `section` tags to hold each dated item.
+Within the `section` is a `div` with the item's information (title, location, and date), then an unordered list with the details about the item.
+
+At this point, you might be wondering about all the layers of hierarchy at play here.
+I decided that, if an element belongs together with its neighbors, they should be enclosed inside a container.
+Though perhaps not completely visible or obvious, a resume definitely has many levels of organization at play.
+The topmatter really is separate from the rest of the content.
+Each section is truly separate from the next.
+Each item is separate from the others within a section.
+Et cetera, et cetera.
+And this has true benefits: CSS styling works a lot better when I can target specific groups of elements easily.
+I can add a flexbox to a group of items without having to go back and add `div`s.
+Another benefit is that the page structure can be parsed more easily, which greatly aids in accessibility.
+
+#### Listed sections
+
+"Listed" sections just have lists of things, such as specific skills.
+Every list has a category, such as "software skills" or "engineering courses".
+The structure of these sections looks like so:
+
+```html
+<section class="skills">
+    <h2>Skills</h2>
+
+    <section class="resitem-list">
+        <table>
+            <tr>
+                <td class="resitem-title">Programming</td>
+                <td>Python, HTML, Haskell, VBA Macros, Scratch, Brainfsk</td>
+            </tr>
+
+            <tr>
+                [more amazing skills]
+            </tr>
+
+            [...]
+        </table>
+    </section>
+</section>
+```
+
+The list is represented as a table, where each row is a skill category.
+The categories are formatted as a `resitem-title` for uniformity, meaning that the categories are formatted identically to the dated item titles.
