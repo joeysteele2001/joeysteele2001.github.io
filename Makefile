@@ -14,4 +14,4 @@ serve:
 
 .PHONY: clean
 clean:
-	jekyll clean
+	bundle exec jekyll clean
