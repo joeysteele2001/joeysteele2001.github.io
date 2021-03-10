@@ -108,6 +108,10 @@ div.language-java::before {
     content: "Java"
 }
 
+div.language-html::before {
+    content: "HTML"
+}
+
 code {
     font-family: $code-fonts;
 }
