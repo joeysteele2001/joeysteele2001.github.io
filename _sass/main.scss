@@ -77,6 +77,21 @@ a:hover {
     color: var(--text-color-secondary);
 }
 
+details {
+    border: 1px solid var(--code-border);
+    border-radius: 4px;
+    padding: 10px;
+
+    > summary {
+        cursor: pointer;
+        user-select: none;
+    }
+}
+
+details[open] > summary {
+    padding-bottom: 10px;
+}
+
 pre {
     overflow-x: scroll;
     padding: 8px;
