@@ -1,0 +1,4 @@
+<details {% if include.class %}class="{{ include.class }}" {% endif %}>
+    <summary>{{ include.summary | default: "(Click to expand)" }}</summary>
+    <span class="details-content">{{ include.content }}</span>
+</details>
