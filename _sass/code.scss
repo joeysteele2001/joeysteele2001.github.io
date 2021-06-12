@@ -1,0 +1,206 @@
+@import 'code-light';
+@import 'code-dark';
+
+:root {
+    --code-pre      : #{$code-pre    };
+    --code-hll      : #{$code-hll    };
+    --code-c        : #{$code-c      };
+    --code-err      : #{$code-err    };
+    --code-err-bg   : #{$code-err-bg };
+    --code-k        : #{$code-k      };
+    --code-l        : #{$code-l      };
+    --code-n        : #{$code-n      };
+    --code-o        : #{$code-o      };
+    --code-x        : #{$code-x      };
+    --code-p        : #{$code-p      };
+    --code-cm       : #{$code-cm     };
+    --code-cp       : #{$code-cp     };
+    --code-c1       : #{$code-c1     };
+    --code-cs       : #{$code-cs     };
+    --code-ge       : #{$code-ge     };
+    --code-gs       : #{$code-gs     };
+    --code-kc       : #{$code-kc     };
+    --code-kd       : #{$code-kd     };
+    --code-kn       : #{$code-kn     };
+    --code-kp       : #{$code-kp     };
+    --code-kr       : #{$code-kr     };
+    --code-kt       : #{$code-kt     };
+    --code-ld       : #{$code-ld     };
+    --code-m        : #{$code-m      };
+    --code-s        : #{$code-s      };
+    --code-na       : #{$code-na     };
+    --code-nb       : #{$code-nb     };
+    --code-nc       : #{$code-nc     };
+    --code-no       : #{$code-no     };
+    --code-nd       : #{$code-nd     };
+    --code-ni       : #{$code-ni     };
+    --code-ne       : #{$code-ne     };
+    --code-nf       : #{$code-nf     };
+    --code-nl       : #{$code-nl     };
+    --code-nn       : #{$code-nn     };
+    --code-nx       : #{$code-nx     };
+    --code-py       : #{$code-py     };
+    --code-nt       : #{$code-nt     };
+    --code-nv       : #{$code-nv     };
+    --code-ow       : #{$code-ow     };
+    --code-w        : #{$code-w      };
+    --code-mf       : #{$code-mf     };
+    --code-mh       : #{$code-mh     };
+    --code-mi       : #{$code-mi     };
+    --code-mo       : #{$code-mo     };
+    --code-sb       : #{$code-sb     };
+    --code-sc       : #{$code-sc     };
+    --code-sd       : #{$code-sd     };
+    --code-s2       : #{$code-s2     };
+    --code-se       : #{$code-se     };
+    --code-sh       : #{$code-sh     };
+    --code-si       : #{$code-si     };
+    --code-sx       : #{$code-sx     };
+    --code-sr       : #{$code-sr     };
+    --code-s1       : #{$code-s1     };
+    --code-ss       : #{$code-ss     };
+    --code-bp       : #{$code-bp     };
+    --code-vc       : #{$code-vc     };
+    --code-vg       : #{$code-vg     };
+    --code-vi       : #{$code-vi     };
+    --code-il       : #{$code-il     };
+    --code-gu       : #{$code-gu     };
+    --code-gd       : #{$code-gd     };
+    --code-gi       : #{$code-gi     }; 
+}
+
+@media(prefers-color-scheme: dark) {
+    :root {
+        --code-pre      : #{$code-pre-dark    };
+        --code-hll      : #{$code-hll-dark    };
+        --code-c        : #{$code-c-dark      };
+        --code-err      : #{$code-err-dark    };
+        --code-err-bg   : #{$code-err-bg-dark };
+        --code-k        : #{$code-k-dark      };
+        --code-l        : #{$code-l-dark      };
+        --code-n        : #{$code-n-dark      };
+        --code-o        : #{$code-o-dark      };
+        --code-x        : #{$code-x-dark      };
+        --code-p        : #{$code-p-dark      };
+        --code-cm       : #{$code-cm-dark     };
+        --code-cp       : #{$code-cp-dark     };
+        --code-c1       : #{$code-c1-dark     };
+        --code-cs       : #{$code-cs-dark     };
+        --code-ge       : #{$code-ge-dark     };
+        --code-gs       : #{$code-gs-dark     };
+        --code-kc       : #{$code-kc-dark     };
+        --code-kd       : #{$code-kd-dark     };
+        --code-kn       : #{$code-kn-dark     };
+        --code-kp       : #{$code-kp-dark     };
+        --code-kr       : #{$code-kr-dark     };
+        --code-kt       : #{$code-kt-dark     };
+        --code-ld       : #{$code-ld-dark     };
+        --code-m        : #{$code-m-dark      };
+        --code-s        : #{$code-s-dark      };
+        --code-na       : #{$code-na-dark     };
+        --code-nb       : #{$code-nb-dark     };
+        --code-nc       : #{$code-nc-dark     };
+        --code-no       : #{$code-no-dark     };
+        --code-nd       : #{$code-nd-dark     };
+        --code-ni       : #{$code-ni-dark     };
+        --code-ne       : #{$code-ne-dark     };
+        --code-nf       : #{$code-nf-dark     };
+        --code-nl       : #{$code-nl-dark     };
+        --code-nn       : #{$code-nn-dark     };
+        --code-nx       : #{$code-nx-dark     };
+        --code-py       : #{$code-py-dark     };
+        --code-nt       : #{$code-nt-dark     };
+        --code-nv       : #{$code-nv-dark     };
+        --code-ow       : #{$code-ow-dark     };
+        --code-w        : #{$code-w-dark      };
+        --code-mf       : #{$code-mf-dark     };
+        --code-mh       : #{$code-mh-dark     };
+        --code-mi       : #{$code-mi-dark     };
+        --code-mo       : #{$code-mo-dark     };
+        --code-sb       : #{$code-sb-dark     };
+        --code-sc       : #{$code-sc-dark     };
+        --code-sd       : #{$code-sd-dark     };
+        --code-s2       : #{$code-s2-dark     };
+        --code-se       : #{$code-se-dark     };
+        --code-sh       : #{$code-sh-dark     };
+        --code-si       : #{$code-si-dark     };
+        --code-sx       : #{$code-sx-dark     };
+        --code-sr       : #{$code-sr-dark     };
+        --code-s1       : #{$code-s1-dark     };
+        --code-ss       : #{$code-ss-dark     };
+        --code-bp       : #{$code-bp-dark     };
+        --code-vc       : #{$code-vc-dark     };
+        --code-vg       : #{$code-vg-dark     };
+        --code-vi       : #{$code-vi-dark     };
+        --code-il       : #{$code-il-dark     };
+        --code-gu       : #{$code-gu-dark     };
+        --code-gd       : #{$code-gd-dark     };
+        --code-gi       : #{$code-gi-dark     }; 
+    }
+}
+
+.highlight pre { background-color: var(--code-pre) }
+.highlight .hll { background-color: var(--code-hll) }
+.highlight .c { color: var(--code-c); font-style: italic } 
+.highlight .err { color: var(--code-err); background-color: var(--code-err-bg) } 
+.highlight .k { color: var(--code-k); font-weight: bold; } 
+.highlight .l { color: var(--code-l) } 
+.highlight .n { color: var(--code-n) } 
+.highlight .o { color: var(--code-o); font-weight: bold; } 
+.highlight .x { color: var(--code-x) } 
+.highlight .p { color: var(--code-p) } 
+.highlight .cm { color: var(--code-cm); font-style: italic; } 
+.highlight .cp { color: var(--code-cp); font-style: italic; } 
+.highlight .c1 { color: var(--code-c1); font-style: italic; } 
+.highlight .cs { color: var(--code-cs); font-style: italic; } 
+.highlight .ge { font-style: var(--code-ge); font-style: italic; } 
+.highlight .gs { font-weight: var(--code-gs); font-weight: bold; } 
+.highlight .kc { color: var(--code-kc); font-weight: bold; } 
+.highlight .kd { color: var(--code-kd); font-weight: bold; } 
+.highlight .kn { color: var(--code-kn); font-weight: bold; } 
+.highlight .kp { color: var(--code-kp); font-weight: bold; } 
+.highlight .kr { color: var(--code-kr); font-weight: bold; } 
+.highlight .kt { color: var(--code-kt); font-weight: bold; } 
+.highlight .ld { color: var(--code-ld) } 
+.highlight .m { color: var(--code-m) } 
+.highlight .s { color: var(--code-s) } 
+.highlight .na { color: var(--code-na) } 
+.highlight .nb { color: var(--code-nb) } 
+.highlight .nc { color: var(--code-nc) } 
+.highlight .no { color: var(--code-no) } 
+.highlight .nd { color: var(--code-nd); font-weight: bold; } 
+.highlight .ni { color: var(--code-ni) } 
+.highlight .ne { color: var(--code-ne); font-weight: bold; } 
+.highlight .nf { color: var(--code-nf) } 
+.highlight .nl { color: var(--code-nl) } 
+.highlight .nn { color: var(--code-nn) } 
+.highlight .nx { color: var(--code-nx) } 
+.highlight .py { color: var(--code-py) } 
+.highlight .nt { color: var(--code-nt) } 
+.highlight .nv { color: var(--code-nv) } 
+.highlight .ow { color: var(--code-ow) } 
+.highlight .w { color: var(--code-w); text-decoration: underline; } 
+.highlight .mf { color: var(--code-mf) } 
+.highlight .mh { color: var(--code-mh) } 
+.highlight .mi { color: var(--code-mi) } 
+.highlight .mo { color: var(--code-mo) } 
+.highlight .sb { color: var(--code-sb) } 
+.highlight .sc { color: var(--code-sc) } 
+.highlight .sd { color: var(--code-sd); font-style: italic } 
+.highlight .s2 { color: var(--code-s2) } 
+.highlight .se { color: var(--code-se) } 
+.highlight .sh { color: var(--code-sh) } 
+.highlight .si { color: var(--code-si) } 
+.highlight .sx { color: var(--code-sx) } 
+.highlight .sr { color: var(--code-sr) } 
+.highlight .s1 { color: var(--code-s1) } 
+.highlight .ss { color: var(--code-ss) } 
+.highlight .bp { color: var(--code-bp) } 
+.highlight .vc { color: var(--code-vc) } 
+.highlight .vg { color: var(--code-vg) } 
+.highlight .vi { color: var(--code-vi) } 
+.highlight .il { color: var(--code-il) } 
+.highlight .gh { font-weight: bold; } 
+.highlight .gu { color: var(--code-gu); font-weight: bold; } 
+.highlight .gd { color: var(--code-gd); } 
+.highlight .gi { color: var(--code-gi); } 
