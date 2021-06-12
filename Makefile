@@ -1,4 +1,4 @@
-BUILD-FLAGS = --drafts
+BUILD-FLAGS = --drafts --incremental
 SERVE-FLAGS = $(BUILD-FLAGS)
 
 .PHONY: all
