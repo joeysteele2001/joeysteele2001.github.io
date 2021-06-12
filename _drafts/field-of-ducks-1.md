@@ -53,7 +53,8 @@ Let's start from the beginning with *addition*.
 
 We won't get *too* exotic here.
 We'll use the plus sign ($+$) for adding numbers.
-Now we could define addition however we want, but let's force our number system to follow similar properties we already know.
+We could define addition however we want, but let's force our number system to follow similar properties we already know.
+That way, our number system will follow our intuition as much as possible.
 We'll fill in this addition table as we go:
 
 | $+$     | $\zero$ | $\one$ |
@@ -62,7 +63,7 @@ We'll fill in this addition table as we go:
 | $\one$  | $\idk$  | $\idk$ |
 {:.cayley-table}
 
-Early on, we learned that addition is *commutative*.
+Early on in school, we learned that addition is *commutative*.
 This means $a + b = b + a$.
 Great!
 That...
@@ -123,10 +124,10 @@ Let's advance forward.
 ### Multiplication
 
 Once again, we won't get too exotic with multiplication.
-We'll use a "times sign" ($\times$) for multiplication.
+We'll use a "times sign" ($\times$) for it.
 
 Our multiplication can follow many similar properties as addition.
-We'll make it:
+We'll say it is:
 
 * commutative: $a \times b = b \times a$,
 * and associative: $(a \times b) \times c = a \times (b \times c)$.
@@ -149,7 +150,7 @@ $$\begin{gathered}
 
 We can also define a multiplicative *inverse*: $\frac{1}{a}$, or $\inv{a}$.
 Remember that zero doesn't have an inverse, since division by zero is undefined.
-Every non-$\zero$ number $a$ has a multiplicative inverse $\inv{a}$, and $a \times \inv{a} = \one$.
+So, every non-$\zero$ number $a$ has a multiplicative inverse $\inv{a}$, and $a \times \inv{a} = \one$.
 In other words, $\one \times \inv{\one} = \one$.
 
 What is $\inv{\one}$?
@@ -159,15 +160,15 @@ So $\one$ is its own inverse: $\inv{\one} = \one$.
 We still don't know $\zero \times \zero$!
 For that, let's remember one more property: *distributivity*.
 
-In algebra class, this property is often quite helpful.
-It says that "multiplication distributes over addition", meaning $a \times (b + c) = a \times b + a \times c$.
+In algebra, distributivity is often quite helpful.
+It says that "multiplication distributes over addition", meaning $a \times (b + c) = (a \times b) + (a \times c)$.
 Let's make our numbers follow this property too!
 
 Now let's assume, for the sake of argument, that $\zero \times \zero = \one$.
 If that's true, then:
 
 $$\begin{aligned}
-\zero \times (\zero + \one) &= \zero \times \zero + \zero \times \one \\
+\zero \times (\zero + \one) &= (\zero \times \zero) + (\zero \times \one) \\
 \zero \times \one &= \one + \zero \\
 \zero &= \one \\
 \end{aligned}$$
@@ -204,7 +205,7 @@ Well, for one, all basic algebra automatically applies to our ducks!
 So it's completely valid to solve this equation:
 
 $$\begin{aligned}
-\one x + \one &= \zero \\
+(\one \times x) + \one &= \zero \\
 x + \one &= \zero & &\text{(identity)} \\
 x + \one - \one &= \zero - \one & &\text{(subtract both sides)} \\
 x &= \zero + (-\one) & &\text{(subtraction is addition)} \\
@@ -249,6 +250,36 @@ $$\begin{bmatrix}
 Reading off the right side of the augmented matrix, we see that:
 
 $$\vec{x} = \begin{bmatrix} \one \\ \one \end{bmatrix}$$
+
+It's even valid to solve $A \vec{x} = \vec{b}$ by taking $\inv{A}$:
+
+$$ \vec{x} = \inv{A} \vec{b} $$
+
+We can compute the inverse of a $2 \times 2$ matrix like so:
+
+$$\begin{gathered}
+A = \begin{bmatrix} a & b \\ c & d \end{bmatrix} \\
+\inv{A} = \frac{\one}{ad - bc} \begin{bmatrix} d & -b \\ -c & a \end{bmatrix}
+\end{gathered}$$
+
+So, for our equation:
+
+$$\begin{aligned}
+\vec{x} &= \inv{A} \vec{b} \\
+&= \frac{\one}{(\one \times \one) - (\one \times \zero)}
+    \begin{bmatrix} \one & -\one \\ -\zero & \one \end{bmatrix}
+    \begin{bmatrix} \zero \\ \one \end{bmatrix} \\
+&= \frac{\one}{\one - \zero}
+    \begin{bmatrix} \one & \one \\ \zero & \one \end{bmatrix}
+    \begin{bmatrix} \zero \\ \one \end{bmatrix} \\
+&= \frac{\one}{\one}
+    \begin{bmatrix}
+        (\one \times \zero) + (\one \times \one) \\
+        (\zero \times \zero) + (\one \times \one)
+    \end{bmatrix} \\
+&= \one \cdot \begin{bmatrix} \zero + \one \\ \zero + \one \end{bmatrix} \\
+&= \begin{bmatrix} \one \\ \one \end{bmatrix}
+\end{aligned}$$
 {% endcapture %}
 
 {% include details.html content=detail-content %}
