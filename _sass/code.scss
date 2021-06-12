@@ -1,6 +1,73 @@
 @import 'code-light';
 @import 'code-dark';
 
+$code-bg: #ffffff;
+$code-border: #aaaaaa;
+$code-lang-bg: #cccccc;
+
+$code-bg-dark: #272822;
+$code-border-dark: #555555;
+$code-lang-bg-dark: #555555;
+
+$code-fonts: 'SFMono-Regular', Menlo, Consolas, 'Liberation Mono', Courier, monospace;
+
+:root {
+    --code-bg: #{$code-bg};
+    --code-border: #{$code-border};
+    --code-lang-bg: #{$code-lang-bg};
+}
+
+@media (prefers-color-scheme: dark) {
+    :root {
+        --code-bg: #{$code-bg-dark};
+        --code-border: #{$code-border-dark};
+        --code-lang-bg: #{$code-lang-bg-dark};
+    }
+}
+
+pre {
+    overflow-x: scroll;
+    padding: 2em 8px 8px 8px;
+    border: 1px solid var(--code-border);
+    border-radius: 4px;
+}
+
+div[class*="language-"] {
+    position: relative;
+}
+
+div[class*="language-"]::before {
+    background-color: var(--code-lang-bg);
+    border: 1px solid var(--code-border);
+    border-radius: 0 4px 0 4px;
+    padding: 4px 8px;
+    font-size: 75%;
+    font-weight: bold;
+    letter-spacing: 0.05rem;
+    position: absolute;
+    right: 0;
+}
+
+div.language-rust::before {
+    content: "Rust";
+}
+
+div.language-java::before {
+    content: "Java"
+}
+
+code {
+    font-family: $code-fonts;
+}
+
+code.language-plaintext {
+    background-color: var(--code-bg);
+    border-radius: 4px;
+    border-width: 1px;
+    border-style: solid;
+    border-color: var(--code-border);
+}
+
 :root {
     --code-pre      : #{$code-pre    };
     --code-hll      : #{$code-hll    };

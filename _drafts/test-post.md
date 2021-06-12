@@ -2,6 +2,7 @@
 author: Joey Steele
 title: Test Post
 math: true
+code: true
 ---
 
 My first test post.
