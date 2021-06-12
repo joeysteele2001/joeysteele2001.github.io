@@ -6,6 +6,7 @@ date: June 11, 2021
 math: true
 tags: math spam ducks
 extra_css: cayley
+published: true
 ---
 
 Oh no!
