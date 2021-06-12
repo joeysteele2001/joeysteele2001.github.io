@@ -1,0 +1,24 @@
+$table-border: 1px solid;
+$table-font-size: 125%;
+$table-padding: 5px;
+
+.cayley-table {
+    margin: auto;
+    table-layout: fixed;
+    font-size: $table-font-size;
+    border-collapse: collapse;
+    border: $table-border;
+
+    thead {
+        border-bottom: $table_border;
+    }
+
+    tr > :nth-child(1) {
+        border-right: $table-border;
+    }
+
+    th, td {
+        padding: $table-padding;
+        text-align: center;
+    }
+}
