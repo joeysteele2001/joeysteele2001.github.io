@@ -1,6 +1,9 @@
+# status: complete | in-progress | abandoned
+
 - id: field-of-ducks
   title: A Field of Ducks
   url: /series/field-of-ducks.html
+  status: in-progress
   description:
     Creating a brand-new number system *with ducks*.
     Because we can.

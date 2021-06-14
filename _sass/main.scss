@@ -12,6 +12,10 @@ $box-border-dark: #555555;
 
 $body-fonts: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
 
+$series-complete-color: #31aa31;
+$series-in-progress-color: #dfd767;
+$series-abandoned-color: #c84343;
+
 :root {
     --background-color: #{$background-color};
     --text-color: #{$text-color};
@@ -84,4 +88,27 @@ details[open] > summary {
 .series-info {
     margin: auto;
     width: 75%;
+}
+
+.series-status {
+    display: inline flow-root;
+    text-transform: uppercase;
+    font-size: 75%;
+    padding: 2px 5px;
+    border-radius: 4px;
+}
+
+.series-complete {
+    color: $text-color-dark;
+    background-color: $series-complete-color;
+}
+
+.series-in-progress {
+    color: $text-color;
+    background-color: $series-in-progress-color;
+}
+
+.series-abandoned {
+    color: $text-color-dark;
+    background-color: $series-abandoned-color;
 }

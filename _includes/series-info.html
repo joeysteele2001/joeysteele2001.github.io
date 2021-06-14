@@ -7,6 +7,9 @@
         <a href="{{ series.url }}" class="series-title">{{ series.title }}</a>.
         Click to list all parts.
     </summary>
+    <div>
+        {% include series-status.html status=series.status %}
+    </div>
     <nav>
         <ol class="series-parts">
             {% for post in series_posts %}

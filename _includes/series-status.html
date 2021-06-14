@@ -1,0 +1,13 @@
+{% if include.status == "complete" %}
+    <div class="series-status series-complete">
+        complete
+    </div>
+{% elsif include.status == "in-progress" %}
+    <div class="series-status series-in-progress">
+        in progress
+    </div>
+{% elsif include.status == "abandoned" %}
+    <div class="series-status series-abandoned">
+        abandoned
+    </div>
+{% endif %}

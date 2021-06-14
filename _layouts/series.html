@@ -9,6 +9,7 @@ layout: basic
 {% assign page.title = page_title %}
 
 <header class="series-summary">
+    {% include series-status.html status=series.status %}
     {{ content }}
 </header>
 <section>
