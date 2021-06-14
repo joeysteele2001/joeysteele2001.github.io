@@ -1,0 +1,23 @@
+{% assign series = site.data.series | where: "id", page.series-id | first %}
+{% assign series_posts = site.posts | where: "series-id", page.series-id | sort: "series-index" %}
+
+<details class="series-info">
+    <summary>
+        This is Part {{ page.series-index }} of the series
+        <a href="{{ series.url }}" class="series-title">{{ series.title }}</a>.
+        Click to list all parts.
+    </summary>
+    <nav>
+        <ol class="series-parts">
+            {% for post in series_posts %}
+            <li value="{{ post.series-index }}">
+                {% if page.url == post.url %}
+                <strong>{{ post.title }}</strong> (this part)
+                {% else %}
+                <a href="{{ post.url }}">{{ post.title }}</a>
+                {% endif %}
+            </li>
+            {% endfor %}
+        </ol>
+    </nav>
+</details>
