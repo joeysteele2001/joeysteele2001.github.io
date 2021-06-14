@@ -80,3 +80,12 @@ details {
 details[open] > summary {
     padding-bottom: 10px;
 }
+
+.side-by-side {
+    margin: auto;
+    max-width: 30rem;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    row-gap: 1rem;
+}
