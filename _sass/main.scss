@@ -30,6 +30,12 @@ $body-fonts: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubun
     }
 }
 
+// TEMPORARY: REMOVE WHEN CONSTRUCTION DUCK IS REMOVED
+.construction-duck {
+    width: 40rem;
+    max-width: 90%;
+}
+
 body {
     margin: 3rem auto;
     background: var(--background-color);
