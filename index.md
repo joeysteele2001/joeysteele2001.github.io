@@ -5,6 +5,6 @@ layout: basic
 ---
 Hello, world! This is my website. I am currently working on it.
 
-[Blog](/blog.html)
+A construction duck, because this website is *under construction*!
 
-![Construction Duck](assets/img/construction-duck.jpg){:width="400px"}
+![Construction Duck](assets/img/construction-duck.jpg){:.construction-duck}
