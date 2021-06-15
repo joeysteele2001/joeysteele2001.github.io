@@ -16,3 +16,8 @@ layout: default
         {{ content }}
     </section>
 </article>
+<footer>
+    {% if page.series-id and page.series-index %}
+        {% include series-nav.html %}
+    {% endif %}
+</footer>
