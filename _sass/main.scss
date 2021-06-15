@@ -20,6 +20,7 @@ $light-line: 1px solid var(--box-border);
     --text-color-secondary: #{$text-color-secondary};
     --link-hover-color: #{$link-hover-color};
     --box-border: #{$box-border};
+    --nav-background: #{$text-color};
 }
 
 @media (prefers-color-scheme: dark) {
@@ -29,17 +30,46 @@ $light-line: 1px solid var(--box-border);
         --text-color-secondary: #{$text-color-secondary-dark};
         --link-hover-color: #{$link-hover-color-dark};
         --box-border: #{$box-border-dark};
+        --nav-background: #{$text-color-dark};
     }
 }
 
 body {
-    margin: 3rem auto;
+    margin: 0;
+    padding: 0;
     background: var(--background-color);
     color: var(--text-color);
     font-family: $body-fonts;
     font-size: 16px;
     line-height: 1.5;
-    max-width: 90%;
+
+    .content {
+        margin: 3rem auto;
+        max-width: 90%;
+    }
+}
+
+.nav-top {
+    margin: 0;
+    padding: 0;
+    background-color: var(--nav-background);
+    display: flex;
+    font-size: 125%;
+    
+    .current-page {
+        font-weight: bold;
+    }
+    
+    a {
+        text-decoration: none;
+        color: var(--background-color);
+        padding: 0.5rem 1rem;
+    }
+
+    a:hover {
+        background-color: var(--link-hover-color);
+        color: var(--background-color);
+    }
 }
 
 $article-width: 60rem;

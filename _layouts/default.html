@@ -28,7 +28,16 @@ layout: compress
 </head>
 
 <body>
-    {{ content }}
+    <nav class="nav-top">
+        {% for item in site.data.navigation %}
+        <a href="{{ item.link }}" {% if page.url==item.link %}class="current-page" {% endif %}>
+            {{ item.name }}
+        </a>
+        {% endfor %}
+    </nav>
+    <div class="content">
+        {{ content }}
+    </div>
 </body>
 
 </html>
