@@ -36,6 +36,12 @@ $light-line: 1px solid var(--box-border);
     }
 }
 
+// TEMPORARY: REMOVE WHEN CONSTRUCTION DUCK IS REMOVED
+.construction-duck {
+    width: 40rem;
+    max-width: 90%;
+}
+
 body {
     margin: 0;
     padding: 0;
