@@ -49,6 +49,11 @@ article.blog-post {
     margin: auto;
 }
 
+h1 {
+    // h1 inside article is smaller than outside, so make it the same size as normal
+    font-size: 2em;
+}
+
 h1, h2, h3, h4, h5, h6 {
     line-height: 1.2;
 }
