@@ -7,6 +7,7 @@ math: true
 tags: math spam ducks
 extra_css: cayley
 published: true
+description: We make a new mathematical field (number system) using only emoji characters.
 ---
 
 Oh no!
