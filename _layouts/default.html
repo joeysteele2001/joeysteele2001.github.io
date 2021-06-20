@@ -7,6 +7,8 @@ layout: compress
 
 <head>
     <meta charset="utf-8">
+    <meta name="description" content="{{ page.description | truncate: 160 }}">
+    {% if page.author != nil %}<meta name="author" content="{{ page.author }}">{% endif %}
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>{{ page.title }}{% if page.subtitle != "" and page.subtitle != nil %}: {{ page.subtitle }}{% endif %}</title>
     <link rel="stylesheet" href="{{ site.baseurl }}/assets/css/style.css">
