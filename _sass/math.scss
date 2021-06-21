@@ -2,3 +2,17 @@
     overflow-y: hidden;
     overflow-x: scroll;
 }
+
+// // Hide HTML math in Firefox before katex css loads
+// @supports (-moz-appearance:none) {
+//     .katex-display .katex-html {
+//         display: none;
+//     }
+// }
+
+// // Hide HTML math in Safari before katex css loads
+// @supports (-webkit-appearance:-apple-pay-button) {
+//     .katex-display .katex-html {
+//         display: none;
+//     }
+// }
