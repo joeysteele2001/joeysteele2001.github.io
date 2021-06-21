@@ -22,6 +22,9 @@ kramdown:
 
 highlighter: rouge
 
+sass:
+  style: compressed
+
 exclude:
   - README.md
   - CNAME
