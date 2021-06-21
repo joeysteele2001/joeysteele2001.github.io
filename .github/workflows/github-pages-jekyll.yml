@@ -22,6 +22,10 @@ jobs:
       
       # Setup Node as a JS runtime for jekyll (KaTeX)
       - uses: actions/setup-node@v2
+        with:
+          node-version: '14'
+      
+      - run: npm install
       
       # Build with jekyll
       - uses: helaili/jekyll-action@v2
