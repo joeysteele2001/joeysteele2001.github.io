@@ -13,18 +13,16 @@ jobs:
   # This workflow contains a single job called "build"
   github-pages-jekyll:
     # The type of runner that the job will run on
-    runs-on: macos-latest
+    runs-on: ubuntu-latest
 
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v2
       
-      # Install V8 (js runtime for KaTeX)
-      - name: Install V8
-        run: |
-          brew update
-          brew install v8
+      # Install node.js (as js runtime for KaTeX)
+      - name: Install Node
+        run: sudo apt-get install -y nodejs
       
       # Build with jekyll
       - uses: helaili/jekyll-action@v2
