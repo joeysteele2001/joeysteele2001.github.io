@@ -9,8 +9,6 @@ gem "jekyll", "~> 4.1.1"
 # kramdown
 gem 'kramdown-math-katex'
 
-gem 'therubyracer', :platforms => :ruby
-
 # Windows and JRuby does not include zoneinfo files, so bundle the tzinfo-data gem
 # and associated library.
 platforms :mingw, :x64_mingw, :mswin, :jruby do
