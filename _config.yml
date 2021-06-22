@@ -17,6 +17,17 @@ defaults:
       layout: "default"
 
 markdown: kramdown
+kramdown:
+  math_engine: katex
+  math_engine_opts: {
+    globalGroup: true, 
+    macros: {
+      "\\zero": "\\text{🥚}", 
+      "\\one": "\\text{🦆}", 
+      "\\idk": "?",
+      "\\inv#1": "#1^{\\tiny -1}}"
+    }
+  }
 
 highlighter: rouge
 
