@@ -24,3 +24,6 @@ jobs:
       - uses: helaili/jekyll-action@v2
         with:
           token: ${{ secrets.BUILD_ACTION_TOKEN }}
+          target_branch: 'gh-pages'
+          pre_build_commands: |
+            apk --update add nodejs
