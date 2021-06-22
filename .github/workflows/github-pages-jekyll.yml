@@ -20,11 +20,9 @@ jobs:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v2
       
-      # Install libv8 (as js runtime for KaTeX)
-      - name: Install V8
-        run: sudo apt-get install libv8-dev
-      
       # Build with jekyll
       - uses: helaili/jekyll-action@v2
         with:
           token: ${{ secrets.BUILD_ACTION_TOKEN }}
+          pre-build-commands: |
+            apk --update add nodejs
