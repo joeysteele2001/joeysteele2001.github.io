@@ -1,0 +1,167 @@
+---
+layout: compress
+---
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Graphs!</title>
+    <link rel="icon" href="{{ site.baseurl }}/assets/favicon/favicon-16.png" sizes="16x16">
+    <link rel="icon" href="{{ site.baseurl }}/assets/favicon/favicon-32.png" sizes="32x32">
+</head>
+
+<body>
+    <p>Graphs!</p>
+    <svg id="graph" version="1.1" baseProfile="full" width="300" height="250" xmlns="http://www.w3.org/2000/svg">
+    </svg>
+    <form>
+        <div>
+            <input type="range" id="f0" name="f0" min="0.0" max="16.0" value="1.0" step="0.1">
+            <label for="f0" id="f0-meter">1.0</label>
+            <label for="f0">frequency</label>
+        </div>
+    </form>
+</body>
+
+<style>
+    svg {
+        border: 2px dashed black;
+    }
+
+    svg .axis {
+        stroke: black;
+    }
+
+    svg .datapoint {
+        stroke: blue;
+        stroke-width: 2;
+        fill: none;
+    }
+
+    svg .stem {
+        stroke: blue;
+        stroke-width: 2;
+    }
+</style>
+
+<script>
+    const f0 = 1.0;
+    const fs = 16;
+    const len = 2.0;
+    const ns = [];
+    for (let i = 0; i <= len * fs; i++) {
+        ns.push(i);
+    }
+
+    const samples = ns.map(n => Math.cos(2 * Math.PI * f0 * n / fs));
+    const samples_max = Math.max(...samples.map(x => Math.abs(x)));
+
+    const SVG_PADDING = 25;
+    const svg = document.getElementById("graph");
+    const svg_width = svg.getAttribute("width");
+    const svg_height = svg.getAttribute("height");
+
+    const ctx = {
+        samples: samples,
+        samples_max: samples_max,
+
+        x_zero: SVG_PADDING,
+        x_max: svg_width - SVG_PADDING,
+
+        y_zero: svg_height / 2,
+        y_pos_max: SVG_PADDING,
+        y_neg_max: svg_height - SVG_PADDING,
+
+        svg: svg,
+    };
+
+    const SVG_NS = "http://www.w3.org/2000/svg";
+
+    const draw_graph = (ctx) => {
+        ctx.svg.innerHTML = "";
+        draw_axes(ctx);
+        draw_samples(ctx);
+    };
+
+    const draw_axes = (ctx) => {
+        draw_axis(ctx.x_zero, ctx.x_max, ctx.y_zero, ctx.y_zero, ctx.svg);
+        draw_axis(ctx.x_zero, ctx.x_zero, ctx.y_pos_max, ctx.y_neg_max, ctx.svg);
+    };
+
+    const draw_axis = (x1, x2, y1, y2, svg) => {
+        const axis = document.createElementNS(SVG_NS, "line");
+        axis.setAttribute("class", "axis");
+        axis.setAttribute("x1", x1);
+        axis.setAttribute("x2", x2);
+        axis.setAttribute("y1", y1);
+        axis.setAttribute("y2", y2);
+        svg.append(axis);
+    };
+
+    const graph_to_svg = (n, val, ctx) => {
+        let svg_x = ((ctx.x_max - ctx.x_zero) / ctx.samples.length) * n + ctx.x_zero;
+        let svg_y = (ctx.y_pos_max - ctx.y_zero) / ctx.samples_max * val + ctx.y_zero;
+        return { x: svg_x, y: svg_y };
+    };
+
+    const draw_samples = (ctx) => {
+        for (i = 0; i < ctx.samples.length; i++) {
+            const sample = ctx.samples[i];
+            draw_sample(i, sample, ctx);
+        }
+    };
+
+    const draw_sample = (n, val, ctx) => {
+        let coords = graph_to_svg(n, val, ctx);
+        let svg_x = coords.x;
+        let svg_y = coords.y;
+
+        draw_datapoint(coords, ctx.svg);
+        draw_stem(coords, ctx);
+    };
+
+    const draw_datapoint = (coords, svg) => {
+        const circle = document.createElementNS(SVG_NS, "circle");
+        circle.setAttribute("class", "datapoint");
+        circle.setAttribute("cx", coords.x);
+        circle.setAttribute("cy", coords.y);
+        circle.setAttribute("r", 4);
+        svg.append(circle);
+    };
+
+    const draw_stem = (coords, ctx) => {
+        const stem = document.createElementNS(SVG_NS, "line");
+        stem.setAttribute("class", "stem");
+        stem.setAttribute("x1", coords.x);
+        stem.setAttribute("x2", coords.x);
+        stem.setAttribute("y1", coords.y);
+        stem.setAttribute("y2", ctx.y_zero);
+        ctx.svg.append(stem);
+    };
+
+    draw_graph(ctx);
+
+
+    const update_f0 = (evt) => {
+        const new_f0 = parseFloat(evt.target.value);
+
+        const f0_meter = document.getElementById("f0-meter");
+        f0_meter.innerText = new_f0.toFixed(1);
+
+        const new_samples = ns.map(n => Math.cos(2 * Math.PI * new_f0 * n / fs));
+        ctx.samples = new_samples;
+
+        draw_graph(ctx);
+    };
+
+    const f0_element = document.getElementById("f0");
+    f0_element.addEventListener("change", update_f0);
+    f0_element.addEventListener("input", update_f0);
+
+
+</script>
+
+</html>
