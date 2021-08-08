@@ -1,3 +1,5 @@
+@import 'math';
+
 $background-color: #f2f2f2;
 $text-color: #222222;
 $text-color-secondary: #555555;
@@ -82,6 +84,10 @@ body {
         padding: 0.5rem 1rem;
     }
     
+    .nav-link {
+        transition: background-color 250ms;
+    }
+
     .nav-link:hover {
         cursor: pointer;
         background-color: var(--link-hover-color);
@@ -91,10 +97,16 @@ body {
     .logo {
         user-select: none;
         font-family: $logo-fonts;
-        background-color: var(--background-color);
-        color: var(--text-color);
-        clip-path: circle(40%);
+        height: 3rem;
 
+        circle {
+            fill: var(--background-color);
+        }
+
+        text {
+            fill: var(--text-color);
+            font-size: 200%;
+        }
     }
 }
 
