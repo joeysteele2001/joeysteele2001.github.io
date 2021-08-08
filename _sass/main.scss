@@ -97,10 +97,16 @@ body {
     .logo {
         user-select: none;
         font-family: $logo-fonts;
-        background-color: var(--background-color);
-        color: var(--text-color);
-        clip-path: circle(40%);
+        height: 3rem;
 
+        circle {
+            fill: var(--background-color);
+        }
+
+        text {
+            fill: var(--text-color);
+            font-size: 200%;
+        }
     }
 }
 
