@@ -1,7 +1,7 @@
 ---
 title: Algebra with Ducks
 author: Joey Steele
-date: June 14, 2021
+date: August 8, 2021
 math: true
 tags: math spam ducks
 extra_css: cayley
