@@ -1,6 +1,7 @@
 ---
 title: A Field of Ducks
-subtitle: Part 1
+series-id: field-of-ducks
+series-index: 1
 author: Joey Steele
 date: June 11, 2021
 math: true

@@ -1,0 +1,24 @@
+---
+layout: basic
+---
+
+{% assign series = site.data.series | where: "id", page.series-id | first %}
+{% assign series_posts = site.posts | where: "series-id", page.series-id | sort: "series-index" %}
+
+{% assign page_title = site.data.series | where: "id", page.series-id | map: "title" %}
+{% assign page.title = page_title %}
+
+<header class="series-summary">
+    {% include series-status.html status=series.status %}
+    {{ content }}
+</header>
+<section>
+    <h2>Posts in this series</h2>
+    <ol class="series-parts">
+        {% for post in series_posts %}
+        <li value="{{ post.series-index }}">
+            <a href="{{ post.url }}">{{ post.title }}</a>
+        </li>
+        {% endfor %}
+    </ol>
+</section>
