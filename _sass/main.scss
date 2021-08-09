@@ -14,6 +14,9 @@ $box-border-dark: #555555;
 
 $body-fonts: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
 
+$series-complete-color: #31aa31;
+$series-in-progress-color: #dfd767;
+$series-abandoned-color: #c84343;
 $logo-fonts: 'SFMono-Regular', Menlo, Consolas, 'Liberation Mono', Courier, monospace;
 
 $light-line: 1px solid var(--box-border);
@@ -84,6 +87,10 @@ body {
         padding: 0.5rem 1rem;
     }
     
+    .nav-link {
+        transition: background-color 250ms;
+    }
+
     .nav-link:hover {
         cursor: pointer;
         background-color: var(--link-hover-color);
@@ -93,10 +100,16 @@ body {
     .logo {
         user-select: none;
         font-family: $logo-fonts;
-        background-color: var(--background-color);
-        color: var(--text-color);
-        clip-path: circle(40%);
+        height: 3rem;
 
+        circle {
+            fill: var(--background-color);
+        }
+
+        text {
+            fill: var(--text-color);
+            font-size: 200%;
+        }
     }
 }
 
@@ -111,9 +124,9 @@ footer {
     max-width: $article-width;
     margin: auto;
     border-top: $light-line;
-    padding-top: 1rem;
-
+    
     > nav {
+        padding-top: 1rem;
         display: flex;
         flex-wrap: wrap;
         justify-content: space-evenly;
@@ -159,4 +172,79 @@ details {
 
 details[open] > summary {
     padding-bottom: 10px;
+}
+
+.series-info {
+    margin: auto;
+    width: 75%;
+}
+
+.series-nav {
+    display: flex;
+    flex-wrap: wrap;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid var(--box-border);
+
+    > div {
+        flex: 1 0 0;
+    }
+
+    :first-child {
+        margin-right: auto;
+        text-align: left;
+    }
+
+    .series-name {
+        text-align: center;
+        margin: auto 0.5rem;
+    }
+
+    :last-child {
+        margin-left: auto;
+        text-align: right;
+    }
+
+    .series-nav-button {
+        display: inline-block;
+        padding: 4px 8px;
+        border-radius: 4px;
+        border: 1px solid var(--box-border);
+        
+        a {
+            text-decoration: none;
+        }
+    }
+}
+
+.series-status {
+    display: inline flow-root;
+    width: max-content;
+    text-transform: uppercase;
+    font-size: 75%;
+    padding: 2px 5px;
+    border-radius: 4px;
+}
+
+.series-complete {
+    color: $text-color-dark;
+    background-color: $series-complete-color;
+}
+
+.series-in-progress {
+    color: $text-color;
+    background-color: $series-in-progress-color;
+}
+
+.series-abandoned {
+    color: $text-color-dark;
+    background-color: $series-abandoned-color;
+}
+
+.side-by-side {
+    margin: auto;
+    max-width: 30rem;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    row-gap: 1rem;
 }

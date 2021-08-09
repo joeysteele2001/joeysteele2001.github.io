@@ -1,0 +1,15 @@
+{% case include.status %}
+    {% when "complete" %}
+        {% assign class="series-complete" %}
+        {% assign text="complete" %}
+    {% when "in-progress" %}
+        {% assign class="series-in-progress" %}
+        {% assign text="in progress" %}
+    {% when "abandoned" %}
+        {% assign class="series-abandoned" %}
+        {% assign text="abandoned" %}
+{% endcase %}
+
+<div class="series-status {{ class }}">
+    {{ text }}
+</div>

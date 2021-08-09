@@ -1,0 +1,28 @@
+{% assign series = site.data.series | where: "id", page.series-id | first %}
+{% assign series_posts = site.posts | where: "series-id", page.series-id | sort: "series-index" %}
+
+{% assign previous_ind = page.series-index | minus: 1 %}
+{% assign next_ind = page.series-index | plus: 1 %}
+
+{% assign previous_post = series_posts | where: "series-index", previous_ind | first %}
+{% assign next_post = series_posts | where: "series-index", next_ind | first %}
+
+<nav class="series-nav">
+    <div>
+        {% if previous_post != nil %}
+        <div class="series-nav-button">
+            <a href="{{ previous_post.url }}">&larr;&nbsp;Previous Part</a>
+        </div>
+        {% endif %}
+    </div>
+    <div class="series-name">
+        <span>Series <a href="{{ series.url }}">{{ series.title }}</a></span>
+    </div>
+    <div>
+        {% if next_post != nil %}
+        <div class="series-nav-button">
+            <a href="{{ next_post.url }}">Next Part&nbsp;&rarr;</a>
+        </div>
+        {% endif %}
+    </div>
+</nav>

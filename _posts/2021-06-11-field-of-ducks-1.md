@@ -1,6 +1,7 @@
 ---
 title: A Field of Ducks
-subtitle: Part 1
+series-id: field-of-ducks
+series-index: 1
 author: Joey Steele
 date: June 11, 2021
 math: true
@@ -59,8 +60,8 @@ We could define addition however we want, but let's force our number system to f
 That way, our number system will follow our intuition as much as possible.
 We'll fill in this addition table as we go:
 
-| $$+$$    | $$\zero$$ | $$\one$$ |
-|---------|---------|--------|
+| $$+$$     | $$\zero$$ | $$\one$$ |
+|-----------|-----------|----------|
 | $$\zero$$ | $$\idk$$  | $$\idk$$ |
 | $$\one$$  | $$\idk$$  | $$\idk$$ |
 {:.cayley-table}
@@ -86,7 +87,7 @@ $$\begin{gathered}
 \end{gathered}$$
 
 | $$+$$     | $$\zero$$     | $$\one$$     |
-|---------|-------------|------------|
+|-----------|---------------|--------------|
 | $$\zero$$ | **$$\zero$$** | **$$\one$$** |
 | $$\one$$  | **$$\one$$**  | $$\idk$$     |
 {:.cayley-table}
@@ -107,7 +108,7 @@ Let's fill that into our table:
 $$\one + \one = \zero$$
 
 | $$+$$     | $$\zero$$ | $$\one$$      |
-|---------|---------|-------------|
+|-----------|-----------|---------------|
 | $$\zero$$ | $$\zero$$ | $$\one$$      |
 | $$\one$$  | $$\one$$  | **$$\zero$$** |
 {:.cayley-table}
@@ -145,7 +146,7 @@ $$\begin{gathered}
 \end{gathered}$$
 
 | $$\times$$ | $$\zero$$     | $$\one$$      |
-|----------|-------------|-------------|
+|------------|---------------|---------------|
 | $$\zero$$  | $$\idk$$      | **$$\zero$$** |
 | $$\one$$   | **$$\zero$$** | **$$\one$$**  |
 {:.cayley-table}
@@ -181,7 +182,7 @@ Fill in the final table slot!
 $$\zero \times \zero = \zero$$
 
 | $$\times$$ | $$\zero$$     | $$\one$$  |
-|----------|-------------|---------|
+|------------|---------------|-----------|
 | $$\zero$$  | **$$\zero$$** | $$\zero$$ |
 | $$\one$$   | $$\zero$$     | $$\one$$  |
 {:.cayley-table}
