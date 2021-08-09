@@ -12,6 +12,10 @@ build:
 serve:
 	bundle exec jekyll serve $(SERVE-FLAGS)
 
+.PHONY: serve-local
+serve-local:
+	bundle exec jekyll serve $(SERVE-FLAGS) --host 0.0.0.0
+
 .PHONY: clean
 clean:
 	bundle exec jekyll clean

@@ -9,7 +9,7 @@ layout: default
         {% endif %}
         <p class="bibliographic">{{ page.date | date_to_string }} | {{ page.author }}</p>
         {% if page.series-id and page.series-index %}
-            {% include series-info.html %}
+        {% include series-info.html %}
         {% endif %}
     </header>
     <section class="blog-text">
@@ -18,6 +18,10 @@ layout: default
 </article>
 <footer>
     {% if page.series-id and page.series-index %}
-        {% include series-nav.html %}
+    {% include series-nav.html %}
     {% endif %}
+    <nav>
+        <div><a href="/">Home</a></div>
+        <div><a href="#">Top</a></div>
+    </nav>
 </footer>
