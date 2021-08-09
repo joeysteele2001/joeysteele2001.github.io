@@ -38,6 +38,7 @@ highlighter: rouge
 
 sass:
   style: compressed
+  sourcemap: development
 
 exclude:
   - README.md

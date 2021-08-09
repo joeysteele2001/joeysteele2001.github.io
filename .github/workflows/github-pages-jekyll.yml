@@ -31,5 +31,6 @@ jobs:
         with:
           token: ${{ secrets.BUILD_ACTION_TOKEN }}
           target_branch: 'gh-pages'
+          jekyll_env: 'production'
           pre_build_commands: |
             apk --update add nodejs

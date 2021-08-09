@@ -1,20 +1,21 @@
 BUILD-FLAGS = --drafts --incremental --future
 SERVE-FLAGS = $(BUILD-FLAGS)
+ENV_VARIABLES = JEKYLL_ENV=development
 
 .PHONY: all
 all: build
 
 .PHONY: build
 build:
-	bundle exec jekyll build $(BUILD-FLAGS)
+	$(ENV_VARIABLES) bundle exec jekyll build $(BUILD-FLAGS)
 
 .PHONY: serve
 serve:
-	bundle exec jekyll serve $(SERVE-FLAGS)
+	$(ENV_VARIABLES) bundle exec jekyll serve $(SERVE-FLAGS)
 
 .PHONY: serve-local
 serve-local:
-	bundle exec jekyll serve $(SERVE-FLAGS) --host 0.0.0.0
+	$(ENV_VARIABLES) bundle exec jekyll serve $(SERVE-FLAGS) --host 0.0.0.0
 
 .PHONY: clean
 clean:
