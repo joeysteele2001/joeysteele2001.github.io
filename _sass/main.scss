@@ -239,3 +239,12 @@ details[open] > summary {
     color: $text-color-dark;
     background-color: $series-abandoned-color;
 }
+
+.side-by-side {
+    margin: auto;
+    max-width: 30rem;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    row-gap: 1rem;
+}
