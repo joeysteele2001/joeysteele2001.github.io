@@ -25,13 +25,13 @@ Here are the addition and multiplication tables:
 
 {% capture tables %}
 | $$+$$     | $$\zero$$ | $$\one$$  |
-|---------|---------|---------|
+|-----------|-----------|-----------|
 | $$\zero$$ | $$\zero$$ | $$\one$$  |
 | $$\one$$  | $$\one$$  | $$\zero$$ |
 {:.cayley-table}
 
 | $$\times$$ | $$\zero$$ | $$\one$$  |
-|----------|---------|---------|
+|------------|-----------|-----------|
 | $$\zero$$  | $$\zero$$ | $$\zero$$ |
 | $$\one$$   | $$\zero$$ | $$\one$$  |
 {:.cayley-table}
