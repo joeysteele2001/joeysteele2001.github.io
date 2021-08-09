@@ -1,10 +1,13 @@
 ---
 title: Algebra with Ducks
+series-id: field-of-ducks
+series-index: 2
 author: Joey Steele
 date: August 8, 2021
 math: true
 tags: math spam ducks
 extra_css: cayley
+published: true
 description: Let's develop our duck numbers to work with algebra and polynomials!
 ---
 
