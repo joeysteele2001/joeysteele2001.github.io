@@ -7,7 +7,9 @@ layout: default
         {% if page.subtitle != "" and page.subtitle != nil %}
         <h2 class="subtitle">{{ page.subtitle }}</h2>
         {% endif %}
+        {% if page.date and page.author %}
         <p class="bibliographic">{{ page.date | date_to_string }} | {{ page.author }}</p>
+        {% endif %}
         {% if page.series-id and page.series-index %}
         {% include series-info.html %}
         {% endif %}

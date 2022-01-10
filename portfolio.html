@@ -1,0 +1,40 @@
+---
+title: Music Technology Portfolio
+subtitle: Joey Steele
+layout: post
+---
+
+{% for item in site.data.portfolio %}
+<h2 class="portfolio-name">{{ item.name }}</h2>
+<div class="portfolio-data">
+    {% if item.course %}<div class="portfolio-course">{{ item.course }}</div>{% endif %}
+    <div class="portfolio-date">{{ item.date }}</div>
+</div>
+
+<div class="portfolio-description">
+    {% if item.description %}
+    {{ item.description | markdownify }}
+    {% else %}
+    {% include todo.html content="description" %}
+    {% endif %}
+</div>
+
+
+<h3>Documentation</h3>
+{% if item.documentation and item.documentation != "todo" %}
+<ul>
+    {% for doc in item.documentation %}
+    <li>{{ doc | markdownify | remove: "<p>" | remove: "</p>" }}</li>
+    {% endfor %}
+</ul>
+{% else %}
+{% include todo.html content="documentation" %}
+{% endif %}
+
+<h3>Technologies and Skills</h3>
+<ul class="portfolio-techs">
+    {% for tech in item.techs %}
+    <li>{{ tech | markdownify | remove: "<p>" | remove: "</p>" }}</li>
+    {% endfor %}
+</ul>
+{% endfor %}

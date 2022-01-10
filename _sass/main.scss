@@ -248,3 +248,23 @@ details[open] > summary {
     flex-wrap: wrap;
     row-gap: 1rem;
 }
+
+.portfolio-name {
+    margin-bottom: 0.25rem;
+}
+
+.portfolio-data {
+    color: var(--text-color-secondary);
+    font-style: italic;
+}
+
+.todo {
+    color: red;
+    font-weight: bold;
+    outline: 2px solid pink;
+    padding: 0.5rem;
+}
+
+.todo::before {
+    content: "TO DO: ";
+}
