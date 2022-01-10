@@ -7,7 +7,7 @@ date: August 8, 2021
 math: true
 tags: math spam ducks
 extra_css: cayley
-published: true
+published: false
 description: Let's develop our duck numbers to work with algebra and polynomials!
 ---
 

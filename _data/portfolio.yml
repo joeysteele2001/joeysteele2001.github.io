@@ -1,0 +1,52 @@
+- name: Cantio
+  course: Project Studio Technology
+  date: Fall 2021
+  description: With a group of two other students, we created Cantio, a web application that facilitates learning spoken and written foreign languages through music.
+    This was completed during the Fall 2021 semester for the *Project Studio Technology* course.
+  documentation:
+  - "[GitHub Repo](https://github.com/joeysteele2001/language-of-music)"
+  techs:
+  - Javascript
+  - Typescript
+  - Python
+  - React
+  - Beautiful Soup
+
+- name: Moog Hackathon
+  date: February 2021
+  description: I created the Phoenix Uke, a ukulele body modified to control a Moog Werkstatt synthesizer, with two other students.
+    Our project won third place in the hackathon.
+  documentation:
+  - "[Project Video](https://youtu.be/bA1lbHErTJ4)"
+  - "[GitHub Repo](https://github.com/joeysteele2001/moog2021)"
+  techs:
+  - Teensy (Arduino)
+  - C++
+  - Moog Werkstatt
+  - Analog synthesis
+  - Circuit design
+  - Soldering
+
+- name: Modular Prelude in C
+  course: Laptop Orchestra
+  date: Spring 2020
+  description: I composed a piece of music written for a virtual instrument I designed from scratch in VCV Rack.
+    I wrote the semi-unconventional visual score in LilyPond, a LaTeX-like programming language for music score engraving.
+    This was completed in the second half of the Spring 2020 semester, immediately after the transition to online classes due to COVID.
+  documentation: 
+  - "[Project Video](https://youtu.be/GjICcyIbmm4)"
+  techs:
+  - Music Composition
+  - VCV Rack (simulated modular synth)
+  - TouchOSC (mobile phone interface)
+  - LilyPond (musical score)
+
+- name: Harpsichord Synthesizer
+  course: Audio Technology I
+  date: Fall 2020
+  description: I wrote a synthesizer that loosely models a harpsichord from scratch in PureData, a visual audio programming environment.
+    This work was completed at the end of the Fall 2020 semester for the *Audio Technology I* course.
+  documentation: 
+  - "[Video of Project](https://youtu.be/w3vi4k1LeL8)"
+  techs:
+  - PureData
