@@ -7,7 +7,37 @@ math: true
 code: true
 ---
 
-{% include todo.html content="add intro" %}
+One graphic I really want in my SVG social media banner is one that shows additive synthesis.
+Starting out with one sinusoid, slowly a more complex wave shape is built up by adding higher frequency sinusoids.
+
+Sort of like the thing on the left in this image, but with all the intermediate steps overlaid on each other.
+
+![Synthesis of a bandlimited sawtooth wave, starting from the fundamental frequency, adding up to 10 harmonics.](http://www.muzines.co.uk/images_mag/articles/emm/EMM_81_08_harmonics_2_full.jpg)
+
+That should be pretty straightforward then!
+All I should have to do to generate these graphs in an SVG is:
+
+* look up the [Fourier series](https://en.wikipedia.org/wiki/Fourier_series) coefficients for a sawtooth wave
+* write some code to generate values of the wave for a given number of harmonics
+* get $$N$$ evenly spaced sample values, for some sufficiently large value of $$N$$
+* connect these samples with straight lines
+
+It might take a couple hours, but it should be pretty simple.
+**But!**
+A little voice inside me is nagging.
+"You're making a vector-based graphic.
+Zoom in close enough, and you'll see---[*shudders*]---it's not a smooth curve!"
+
+...I couldn't help myself.
+Those straight lines would've been so easy.
+But you can have real curves in vector graphics!
+You can zoom in as far as you want.
+Finding the values for the curves is more interesting than straight lines.
+And in the end, there'll be smooth curves all the way down.
+
+## Splitting up The Problem
+
+{% include todo.html content="describe svg, bezier curves, the three parts of the problem" %}
 
 ## The Setup
 
@@ -15,7 +45,7 @@ Our goal is to find the Bézier curve that exactly matches a given cubic polynom
 More specifically:
 
 * we are given the coefficients $$c_0, c_1, c_2, c_3$$ that uniquely describe the polynomial $$y(x) = c_3 x^3 + c_2 x^2 + c_1 x + c_0$$,
-* $$y(x)$$ is parameterized as $$\vec{Y}(t) = [t, y(t)]$$,
+* we can write $$y(x)$$ in vector form as $$\vec{Y}(t) = [t, y(t)]$$,
 * we would like to find the cubic Bézier curve $$\vec{P}(t)$$ such that $$\vec{P}(t) = \vec{Y}(t)$$ for $$t \in [0, 1]$$.
 
 This probably feels pretty restrictive---especially since we're trying to match small segments from all over the graph.
