@@ -1,5 +1,5 @@
 ---
 layout: series
-series-id: field-of-ducks
+series-id: banner
 subtitle: Series
 ---

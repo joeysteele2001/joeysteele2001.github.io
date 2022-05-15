@@ -10,6 +10,7 @@ layout: basic
 
 <header class="series-summary">
     {% include series-status.html status=series.status %}
+    {{ site.data.series | where: "id", page.series-id | map: "description" | first | markdownify }}
     {{ content }}
 </header>
 <section>

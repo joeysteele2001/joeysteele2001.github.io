@@ -1,6 +1,8 @@
 ---
 author: Joey Steele
 title: Bezier Graphs
+series-id: banner
+series-index: 2
 math: true
 code: true
 ---
