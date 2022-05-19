@@ -7,3 +7,10 @@
   description:
     Creating a brand-new number system *with ducks*.
     Because we can.
+- id: banner
+  title: Making a Social Media Banner
+  url: /series/banner.html
+  status: in-progress
+  description:
+    I'm designing a banner for my social media profiles that highlights the cool techy, musicy things I like.
+    Some parts of this have been a bit complicated, so this series describes some of the process!
