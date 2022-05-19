@@ -5,6 +5,7 @@ subtitle: Overview
 series-id: banner
 series-index: 1
 date: May 19, 2022
+published: true
 ---
 
 For a while, I've wanted to increase my visibility online, especially professionally.
@@ -41,3 +42,6 @@ Well, I'm going to include a few mathematical graphs, which means I'll be writin
 
 Since I'll be working on this off-and-on, I'll be posting updates individually as I go.
 I will share anything interesting that comes up, *especially* any code I end up writing.
+
+In my next posts, I'll be generating a graph of a sawtooth wave Fourier series.
+See you soon!
