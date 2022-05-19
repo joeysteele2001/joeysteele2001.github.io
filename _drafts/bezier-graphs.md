@@ -3,16 +3,22 @@ author: Joey Steele
 title: Bezier Graphs
 series-id: banner
 series-index: 2
+date: May 19, 2022
 math: true
 code: true
 ---
 
+In these next few posts, I work out how to draw the graph of a sum of sinusoids as a sequence of Bézier curves.
+There's a good bit of math involved, but the final answer is pretty simple!
+
+## Intro
+
 One graphic I really want in my SVG social media banner is one that shows additive synthesis.
 Starting out with one sinusoid, slowly a more complex wave shape is built up by adding higher frequency sinusoids.
 
-Sort of like the thing on the left in this image, but with all the intermediate steps overlaid on each other.
+Sort of like the waves on the right of this image, but with all the intermediate steps overlaid on each other.
 
-![Synthesis of a bandlimited sawtooth wave, starting from the fundamental frequency, adding up to 10 harmonics.](http://www.muzines.co.uk/images_mag/articles/emm/EMM_81_08_harmonics_2_full.jpg)
+![Synthesis of a bandlimited sawtooth wave, starting from the fundamental frequency, adding up to 20 harmonics.](https://www.sfu.ca/sonic-studio-webdav/handbook/Graphics/Law_of_Superposition.gif)
 
 That should be pretty straightforward then!
 All I should have to do to generate these graphs in an SVG is:
@@ -35,9 +41,40 @@ You can zoom in as far as you want.
 Finding the values for the curves is more interesting than straight lines.
 And in the end, there'll be smooth curves all the way down.
 
+{% include details.html
+    summary="If you're just looking for the final answer, here it is!"
+    content="
+Call the original curve $$f(x)$$.
+It will be fit between $$x_0 \le x \le x_1$$.
+Define the variables $$y_0 = f(x_0)$$, $$y_1 = f(x_1)$$, $$y'_0 = f'(x_0)$$, and $$y'_1 = f'(x_1)$$, where $$f'(x)$$ is the derivative of $$f(x)$$.
+Then, the control points $$\vec{P}_0$$, $$\vec{P}_1$$, $$\vec{P}_2$$, $$\vec{P}_3$$ for the Bézier curve that approximates the curve between $$x_0 \le x \le x_1$$ are as follows:
+
+$$\begin{aligned}
+\vec{P_0} &= \begin{bmatrix}x_0 \\ y_0\end{bmatrix} \\
+\vec{P_1} &= \begin{bmatrix}2/3\ x_0 + 1/3\ x_1 \\ y_0 + 1/3 (x_1 - x_0) y'_0\end{bmatrix} \\
+\vec{P_2} &= \begin{bmatrix}1/3\ x_0 + 2/3\ x_1 \\ y_1 - 1/3 (x_1 - x_0) y'_1\end{bmatrix} \\
+\vec{P_3} &= \begin{bmatrix}x_1 \\ y_1\end{bmatrix}
+\end{aligned}$$
+    "
+ %}
+
 ## Splitting up The Problem
 
-{% include todo.html content="describe svg, bezier curves, the three parts of the problem" %}
+{% include todo.html content="describe the three parts of the problem" %}
+
+In an ideal world, vector graphics formats would let me say, "please put a sine wave *here*," and that would be that.
+Unfortunately, SVG, like most formats, only gives a few *primitives* to work with.
+Everything has to be built up from there.
+
+In the case of SVG, the only real curved line primitives are ellipse arcs and Bézier curves.
+Arcs are pretty limited in how they can be used, and they wouldn't handle sinusoids well.
+So that leaves Bézier curves as our only choice.
+
+### What is a Bézier Curve?
+
+![A Bézier curve and its control points.](https://upload.wikimedia.org/wikipedia/commons/d/d0/Bezier_curve.svg){: style="background-color:white" }
+
+{% include todo.html content="describe bezier curves" %}
 
 ## The Setup
 
