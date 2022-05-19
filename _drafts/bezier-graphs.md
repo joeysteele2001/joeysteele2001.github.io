@@ -5,7 +5,6 @@ series-id: banner
 series-index: 2
 date: May 19, 2022
 math: true
-code: true
 ---
 
 In these next few posts, I work out how to draw the graph of a sum of sinusoids as a sequence of Bézier curves.
