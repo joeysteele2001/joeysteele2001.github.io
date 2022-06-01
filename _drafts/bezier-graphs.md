@@ -25,7 +25,7 @@ All I should have to do to generate these graphs in an SVG is:
 
 * look up the [Fourier series](https://en.wikipedia.org/wiki/Fourier_series) coefficients for a sawtooth wave
 * write some code to generate values of the wave for a given number of harmonics
-* get $$N$$ evenly spaced sample values, for some sufficiently large value of $$N$$
+* get $$N$$ evenly-spaced sample values, for some sufficiently large value of $$N$$
 * connect these samples with straight lines
 
 It might take a couple hours, but it should be pretty simple.
@@ -76,7 +76,8 @@ Instead of each piece of the graph being a little line, it'll be a little Bézie
 [Video: The Beauty of Bézier Curves by Freya Holmér](https://youtu.be/aVwxzDHniEw){: #bezier-video}
 
 Bézier curves are ubiquitous in graphics.
-They're fairly simple computationally, and they're easy to understand, flexible, and powerful.
+They're fairly simple computationally.
+They're also pretty easy for humans to understand, and they can make almost any curved shape!
 Most graphics formats support *cubic* Bézier curves, which are defined by four points: the two endpoints, and two other *control points* that determine the shape of the curve.
 In the picture below, $$P_0$$ and $$P_3$$ are the endpoints, and $$P_1$$ and $$P_2$$ are the control points.
 (Technically, all four points are considered control points.)
@@ -88,7 +89,8 @@ If the control points are the vectors $$\vec{P}_0$$, $$\vec{P}_1$$, $$\vec{P}_2$
 
 $$\vec{P}(t) = (1-t)^3 \vec{P}_0 + 3 t (1-t)^2 \vec{P}_1 + 3 t^2 (1-t) \vec{P}_2 + t^3 \vec{P}_3$$
 
-When $$t = 0$$, then the graph is at the starting point $$\vec{P}_0$$, and it hits the end when $$t = 1$$.
+When $$t = 0$$, the graph is at the starting point $$\vec{P}_0$$.
+It hits the end of the curve $$\vec{P}_3$$ when $$t = 1$$.
 In between, it smoothly passes near the other control points.
 I encourage you to watch some of the animations from [the video linked above](#bezier-video) to get a better visual intuition for what's going on.
 (In fact, the whole video is a great intro for the math behind Bézier curves!)
@@ -101,7 +103,7 @@ Stringing together many curves will be pretty straightforward.
 
 Let's be more specific now.
 First of all, let's give a name to the function we're going to plot: $$f(x)$$.
-It turns out, none of the math relies on the curve being anything in particular, so we'll allow any (differentiable) function here.
+It turns out, none of the math relies on the curve having any properties in particular, so we'll allow any (differentiable) function here.
 Next, we'll call the "start" and "end" points of the segment $$x_0$$ and $$x_1$$.
 Finally, $$P(t)$$ will be the Bézier curve that approximates $$f(x)$$ between $$x_0$$ and $$x_1$$.
 The control points of $$\vec{P}$$ are $$\vec{P}_0$$, $$\vec{P}_1$$, $$\vec{P}_2$$, and $$\vec{P}_3$$.
@@ -111,7 +113,7 @@ I'll work out the math in the next post, but here's an overview for how I solve 
 
 * First, we transform the segment to run between $$x = 0$$ and $$x = 1$$.
 * Next, we find a cubic polynomial (one step up from a quadratic) that approximates the segment.
-* Then, we compute the control points of the Bézier curve that precisely matches this cubic.
+* Then, we compute the control points of the Bézier curve which precisely matches this cubic.
 * Finally, we transform those control points back to the position of the original segment.
 
 The reason I don't just directly solve the problem is that the math gets very messy and too complicated to work out by hand.
