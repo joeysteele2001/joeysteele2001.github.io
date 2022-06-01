@@ -61,8 +61,6 @@ $$\begin{aligned}
 
 ## Splitting up The Problem
 
-{% include todo.html content="describe the three parts of the problem" %}
-
 In an ideal world, vector graphics formats would let me say, "please put a sine wave *here*," and that would be that.
 Unfortunately, SVG, like most formats, only gives a few *primitives* to work with.
 Everything has to be built up from there.
