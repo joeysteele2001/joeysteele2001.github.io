@@ -70,6 +70,8 @@ Everything has to be built up from there.
 In the case of SVG, the only real curved line primitives are ellipse arcs and Bézier curves.
 Arcs are pretty limited in how they can be used, and they wouldn't handle sinusoids well.
 So that leaves Bézier curves as our only choice.
+We'll represent the graph as a sequence of cubic Bézier curves strung together.
+Instead of each piece of the graph being a little line, it'll be a little Bézier curve!
 
 ### What is a Bézier Curve?
 
@@ -92,6 +94,33 @@ When $$t = 0$$, then the graph is at the starting point $$\vec{P}_0$$, and it hi
 In between, it smoothly passes near the other control points.
 I encourage you to watch some of the animations from [the video linked above](#bezier-video) to get a better visual intuition for what's going on.
 (In fact, the whole video is a great intro for the math behind Bézier curves!)
+
+### The Parts of the Problem
+
+In order to represent a mathematical graph as a sequence of Bézier curves, we need to refine the problem first.
+To start, we're only going to consider one small segment of the graph at a time.
+Stringing together many curves will be pretty straightforward.
+
+Let's be more specific now.
+First of all, let's give a name to the function we're going to plot: $$f(x)$$.
+It turns out, none of the math relies on the curve being anything in particular, so we'll allow any (differentiable) function here.
+Next, we'll call the "start" and "end" points of the segment $$x_0$$ and $$x_1$$.
+Finally, $$P(t)$$ will be the Bézier curve that approximates $$f(x)$$ between $$x_0$$ and $$x_1$$.
+The control points of $$\vec{P}$$ are $$\vec{P}_0$$, $$\vec{P}_1$$, $$\vec{P}_2$$, and $$\vec{P}_3$$.
+
+So our problem boils down to finding the values for the control points, given $$f(x)$$, $$x_0$$, and $$x_1$$.
+I'll work out the math in the next post, but here's an overview for how I solve it:
+
+* First, we transform the segment to run between $$x = 0$$ and $$x = 1$$.
+* Next, we find a cubic polynomial (one step up from a quadratic) that approximates the segment.
+* Then, we compute the control points of the Bézier curve that precisely matches this cubic.
+* Finally, we transform those control points back to the position of the original segment.
+
+The reason I don't just directly solve the problem is that the math gets very messy and too complicated to work out by hand.
+With the setup above, the numbers stay pretty simple, and we can rely on computers to do some of the work by using matrices.
+If matrices and linear algebra scare you, don't worry: they don't take center stage, and I'm just using them as a tool to lighten the mathematical load on myself.
+
+With that being said, I hope you stick around for the next post, where I'll solve the problem as I listed above!
 
 ## The Setup
 
