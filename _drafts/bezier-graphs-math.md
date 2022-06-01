@@ -8,6 +8,56 @@ date: June 1, 2022
 math: true
 ---
 
+## Transforming To and From A Simpler Case
+
+Conceptually, what we want to do is move the graph left or right so the left edge of the segment is at $$0$$.
+Then we stretch or squish the graph so the right edge ends up at $$1$$.
+
+To do this, I'll introduce a new variable $$u$$ to avoid confusion with $$x$$.
+Our original segment is defined by $$f(x)$$, for $$x_0 \le x \le x_1$$.
+We'll call the new shifted-and-scaled segment $$g(u)$$, where $$0 \le u \le 1$$.
+So our goal is to find $$g(u)$$ so that $$g(0) = f(x_0)$$ and $$g(1) = f(x_1)$$.
+
+Shifting left or right by $$x_0$$ is as simple as adding to $$u$$: $$g(u) = f(x_0 + u)$$.
+As a sanity check, we can see that $$g(0) = f(x_0)$$, which is the first bit of what we want!
+But $$g(1) = f(x_0 + 1)$$, which isn't quite right.
+
+The distance between $$x_0$$ and $$x_1$$ is just $$x_1 - x_0$$.
+We want to scale $$g$$ so that this distance gets squished or stretched to $$1$$.
+To do this, we just multiply $$u$$ by the original distance $$x_1 - x_0$$:
+
+$$g(u) = f(x_0 + u (x_1 - x_0))$$
+
+Now we can double-check our work to see that, sure enough, $$g(0) = f(x_0)$$ and $$g(1) = f(x_0 + x_1 - x_0) = f(x_1)$$.
+
+### Undoing this Simplification
+
+We can continue on finding a Bézier curve to approximate $$g(u)$$, and we'll eventually end up with four control points: $$\vec{Q}_0$$, $$\vec{Q}_1$$, $$\vec{Q}_2$$, and $$\vec{Q}_3$$.
+But they're going to be scaled and shifted horizontally, because we did that at the beginning.
+To undo this, we'll define a new Bézier curve $$\vec{P}(t)$$ with control points $$\vec{P}_0$$, $$\vec{P}_1$$, $$\vec{P}_2$$, and $$\vec{P}_3$$.
+
+First, notice that the $$y$$-coordinates of $$\vec{P}$$ will all be the same as $$\vec{Q}$$, because we don't touch the $$y$$-coordinates when we make our transformation at the beginning.
+For the horizontal coordinates, we can note that when we defined $$g(u)$$ we essentially substituted $$x = x_0 + u (x_1 - x_0)$$.
+So we can solve for $$u$$ in terms of $$x$$ to find the $$x$$-coordinates of $$\vec{P}$$:
+
+$$u = \frac{x - x_0}{x_1 - x_0}$$
+
+In other words, the $$x$$-values of the control points $$P_k$$ are:
+
+$$P_{k,x} = \frac{Q_{k,x} - x_0}{x_1 - x_0}$$
+
+where
+
+$$P_k = \begin{bmatrix}P_{k,x} \\ P_{k,y}\end{bmatrix}; \quad Q_k = \begin{bmatrix}Q_{k,x} \\ Q_{k,y}\end{bmatrix}$$
+
+So that's it!
+We can simplify the problem, going from $$f(x)$$ to $$g(u)$$, and then undo that, going from $$\vec{Q}(t)$$ to $$\vec{P}(t)$$.
+Next up, how do we get from $$g(u)$$ to $$\vec{Q}(t)$$?
+
+## Approximating the Segment with a Cubic Polynomial
+
+## Matching the Cubic Polynomial with a Bézier Curve
+
 ## The Setup
 
 Our goal is to find the Bézier curve that exactly matches a given cubic polynomial for $$0 \le x \le 1$$.
