@@ -1,18 +1,19 @@
 ---
 author: Joey Steele
-title: Bezier Graphs
+title: Bézier Graphs, Part 1
+subtitle: Overview
 series-id: banner
 series-index: 2
-date: May 19, 2022
+date: May 31, 2022
 math: true
 ---
 
-In these next few posts, I work out how to draw the graph of a sum of sinusoids as a sequence of Bézier curves.
-There's a good bit of math involved, but the final answer is pretty simple!
+In these next couple posts, I work out how to draw the graph of a sum of sinusoids as a sequence of Bézier curves.
+This post gives an overview of the problem, and I work out the math in the next post.
 
 ## Intro
 
-One graphic I really want in my SVG social media banner is one that shows additive synthesis.
+One graphic I really want in my SVG social media banner is a visual for additive synthesis.
 Starting out with one sinusoid, slowly a more complex wave shape is built up by adding higher frequency sinusoids.
 
 Sort of like the waves on the right of this image, but with all the intermediate steps overlaid on each other.
@@ -40,9 +41,7 @@ You can zoom in as far as you want.
 Finding the values for the curves is more interesting than straight lines.
 And in the end, there'll be smooth curves all the way down.
 
-{% include details.html
-    summary="If you're just looking for the final answer, here it is!"
-    content="
+{% capture final_answer_content %}
 Call the original curve $$f(x)$$.
 It will be fit between $$x_0 \le x \le x_1$$.
 Define the variables $$y_0 = f(x_0)$$, $$y_1 = f(x_1)$$, $$y'_0 = f'(x_0)$$, and $$y'_1 = f'(x_1)$$, where $$f'(x)$$ is the derivative of $$f(x)$$.
@@ -54,8 +53,11 @@ $$\begin{aligned}
 \vec{P_2} &= \begin{bmatrix}1/3\ x_0 + 2/3\ x_1 \\ y_1 - 1/3 (x_1 - x_0) y'_1\end{bmatrix} \\
 \vec{P_3} &= \begin{bmatrix}x_1 \\ y_1\end{bmatrix}
 \end{aligned}$$
-    "
- %}
+{% endcapture %}
+
+{% include details.html
+    summary="If you're just looking for the final answer, here it is!"
+    content=final_answer_content %}
 
 ## Splitting up The Problem
 
@@ -71,9 +73,25 @@ So that leaves Bézier curves as our only choice.
 
 ### What is a Bézier Curve?
 
+[Video: The Beauty of Bézier Curves by Freya Holmér](https://youtu.be/aVwxzDHniEw){: #bezier-video}
+
+Bézier curves are ubiquitous in graphics.
+They're fairly simple computationally, and they're easy to understand, flexible, and powerful.
+Most graphics formats support *cubic* Bézier curves, which are defined by four points: the two endpoints, and two other *control points* that determine the shape of the curve.
+In the picture below, $$P_0$$ and $$P_3$$ are the endpoints, and $$P_1$$ and $$P_2$$ are the control points.
+(Technically, all four points are considered control points.)
+
 ![A Bézier curve and its control points.](https://upload.wikimedia.org/wikipedia/commons/d/d0/Bezier_curve.svg){: style="background-color:white" }
 
-{% include todo.html content="describe bezier curves" %}
+Bézier curves are defined mathematically using a vector equation.
+If the control points are the vectors $$\vec{P}_0$$, $$\vec{P}_1$$, $$\vec{P}_2$$, and $$\vec{P}_3$$, then the equation for a Bézier curve is:
+
+$$\vec{P}(t) = (1-t)^3 \vec{P}_0 + 3 t (1-t)^2 \vec{P}_1 + 3 t^2 (1-t) \vec{P}_2 + t^3 \vec{P}_3$$
+
+When $$t = 0$$, then the graph is at the starting point $$\vec{P}_0$$, and it hits the end when $$t = 1$$.
+In between, it smoothly passes near the other control points.
+I encourage you to watch some of the animations from [the video linked above](#bezier-video) to get a better visual intuition for what's going on.
+(In fact, the whole video is a great intro for the math behind Bézier curves!)
 
 ## The Setup
 
