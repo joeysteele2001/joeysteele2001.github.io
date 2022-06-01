@@ -85,3 +85,5 @@ $$\begin{aligned}
 & \vec{P}_2 = \begin{bmatrix} 2/3 \\ c_0 + 2/3 \ c_1 + 1/3 \ c_2 \end{bmatrix} \\
 & \vec{P}_3 = \begin{bmatrix} 1 \\ c_0 + c_1 + c_2 + c_3 \end{bmatrix}
 \end{aligned}$$
+
+{% include todo.html content="make connection to sample rate when discussing segment size" %}
