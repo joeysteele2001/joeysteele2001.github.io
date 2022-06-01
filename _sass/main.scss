@@ -118,6 +118,10 @@ $article-width: 60rem;
 article.blog-post {
     max-width: $article-width;
     margin: auto;
+
+    img {
+        max-width: 100%;
+    }
 }
 
 footer {
