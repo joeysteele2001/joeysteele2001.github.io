@@ -111,82 +111,73 @@ In other words, we've found the cubic polynomial $$c(u)$$ that "best" fits $$g(u
 
 ## Matching the Cubic Polynomial with a Bézier Curve
 
-## The Setup
+This is the last step to solve!
+Remember that we're looking for $$\vec{Q}(t)$$ a cubic Bézier curve that has the same path as the polynomial $$c(u)$$.
+This might seem a bit tricky, because $$c(u)$$ is a regular function while $$\vec{Q}(t)$$ is a vector-valued function.
+Fortunately, we can make a vector-valued version of $$c$$ by *parameterizing* it.
 
-Our goal is to find the Bézier curve that exactly matches a given cubic polynomial for $$0 \le x \le 1$$.
-More specifically:
+We'll refer to this new version of the polynomial as $$\vec{C}(t)$$.
+To parameterize it, define $$u(t) = t$$ and $$y(t) = c(u(t)) = c_0 + c_1 t + c_2 t^2 + c_3 t^3$$.
+Now, the vector version of $$c$$ is:
 
-* we are given the coefficients $$c_0, c_1, c_2, c_3$$ that uniquely describe the polynomial $$y(x) = c_3 x^3 + c_2 x^2 + c_1 x + c_0$$,
-* we can write $$y(x)$$ in vector form as $$\vec{Y}(t) = [t, y(t)]$$,
-* we would like to find the cubic Bézier curve $$\vec{P}(t)$$ such that $$\vec{P}(t) = \vec{Y}(t)$$ for $$t \in [0, 1]$$.
+$$\vec{C}(t) =
+\begin{bmatrix} u(t) \\ y(t) \end{bmatrix} =
+\begin{bmatrix} t \\ c_0 + c_1 t + c_2 t^2 + c_3 t^3 \end{bmatrix}$$
 
-This probably feels pretty restrictive---especially since we're trying to match small segments from all over the graph.
-I'll show later that restricting $$x$$ to between 0 and 1 is without loss of generality.
-This is because we can shift and scale the x-axis to fit where we want (and then scale and shift back).
+At this point, to make $$\vec{Q}(t)$$ match $$\vec{C}(t)$$, we just set them equal.
+We can then solve for the control points $$\vec{Q}_0$$, $$\vec{Q}_1$$, $$\vec{Q}_2$$, and $$\vec{Q}_3$$.
+Remember that $$\vec{Q}(t)$$ is a cubic Bézier curve, so its equation is:
 
-## Matching with a Bezier Curve
+$$\vec{Q}(t) = (1-t)^3 \vec{Q}_0 + 3 t (1-t)^2 \vec{Q}_1 + 3 t^2 (1-t) \vec{Q}_2 + t^3 \vec{Q}_3$$
 
-First, we know that a cubic Bézier curve has the vector equation:
+We'll need to rearrange $$\vec{C}$$ and $$\vec{Q}$$ to solve for the control points.
+We'll put both equations in the form $$\vec{V}_0 + t \vec{V}_1 + t^2 \vec{V}_2 + t^3 \vec{V}_3$$.
+First, for $$\vec{C}(t)$$:
 
-$$\vec{P}(t) = (1-t)^3 \vec{P}_0 + 3 (1-t)^2 t \vec{P}_1 + 3 (1-t) t^2 \vec{P}_2 + t^3 \vec{P}_3$$
+$$\vec{C}(t) =
+\begin{bmatrix} 0 \\ c_0 \end{bmatrix} +
+t \begin{bmatrix} 1 \\ c_1 \end{bmatrix} +
+t^2 \begin{bmatrix} 0 \\ c_2 \end{bmatrix} +
+t^3 \begin{bmatrix} 0 \\ c_3 \end{bmatrix}$$
 
-where $$\vec{P}_0, \vec{P}_1, \vec{P}_2, \vec{P}_3$$ are called the *control points*.
-We also have a vector equation for our polynomial:
-
-$$\vec{Y}(t) = \begin{bmatrix}t \\ c_3 t^3 + c_2 t^2 + c_1 t + c_0\end{bmatrix} =
-t^3 \begin{bmatrix}0 \\ c_3\end{bmatrix} +
-t^2 \begin{bmatrix}0 \\ c_2\end{bmatrix} +
-t \begin{bmatrix}1 \\ c_1\end{bmatrix} +
-\begin{bmatrix}0 \\ c_0\end{bmatrix}$$
-
-Let's factor out each of the vector coefficients so that:
-
-$$\vec{Y}(t) = t^3 \vec{C}_3 + t^2 \vec{C}_2 + t \vec{C}_1 + \vec{C}_0$$
-
-Now this looks very similar to $$\vec{P}(t)$$.
-To put them in a similar form, we need to expand out the powers of $$(1-t)$$ and combine the powers of $$t$$:
+It should be easy to multiply and add to verify this is right.
+Next, $$\vec{Q}(t)$$ is more involved because of the $$(1-t)$$ bits.
+First we expand out all the $$t$$ stuff:
 
 $$\begin{aligned}
-\vec{P}(t) = \, & (1 - 3t + 3t^2 - t^3) & \cdot\, \vec{P}_0 \\
-+ \, & 3t (1 - 2t + t^2) & \cdot\, \vec{P}_1 \\
-+ \, & 3t^2 (1 - t) & \cdot\, \vec{P}_2 \\
-+ \, & t^3 & \cdot\, \vec{P_3}
+\vec{Q}(t) &=
+(1 - 3t + 3t^2 - t^3) \vec{Q}_0 \\
+&+ (3t - 6t^2 + 3t^3) \vec{Q}_1 \\
+&+ (3t^2 - 3t^3) \vec{Q}_2 \\
+&+ (t^3) \vec{Q}_3
 \end{aligned}$$
+
+And then we recombine the common powers of $$t$$:
 
 $$\begin{aligned}
-= \, & t^3 (-\vec{P}_0 + 3\vec{P}_1 - 3\vec{P}_2 + \vec{P}_3) \\
-+ \, & t^2 (3\vec{P}_0 - 6\vec{P}_1 + 3\vec{P}_2) \\
-+ \, & t (-3\vec{P}_0 + 3\vec{P}_1) \\
-+ \, & \vec{P}_0
+\vec{Q}(t) &=
+\vec{Q}_0 \\
+&+ t (-3 \vec{Q}_0 + 3 \vec{Q}_1) \\
+&+ t^2 (3 \vec{Q}_0 - 6 \vec{Q}_1 + 3 \vec{Q}_2) \\
+&+ t^3 (-\vec{Q}_0 + 3 \vec{Q}_1 - 3 \vec{Q}_2 + \vec{Q}_3)
 \end{aligned}$$
 
-Both $$\vec{Y}(t)$$ and $$\vec{P}(t)$$ now have the same structure.
-Since $$\vec{Y}(t) = \vec{P}(t)$$, their coefficients are also equal:
+Now we can set $$\vec{Q}(t) = \vec{C}(t)$$ by equating the coefficients of $$t$$:
 
 $$\begin{aligned}
-& \vec{C}_0 = \vec{P}_0 \\
-& \vec{C}_1 = -3\vec{P}_0 + 3\vec{P}_1 \\
-& \vec{C}_2 = 3\vec{P}_0 - 6\vec{P}_1 + 3\vec{P}_2 \\
-& \vec{C}_3 = -\vec{P}_0 + 3\vec{P}_1 - 3\vec{P}_2 + \vec{P}_3
+\vec{Q}_0 = \begin{bmatrix} 0 \\ c_0 \end{bmatrix} \\
+-3 \vec{Q}_0 + 3 \vec{Q}_1 = \begin{bmatrix} 1 \\ c_1 \end{bmatrix} \\
+3 \vec{Q}_0 - 6 \vec{Q}_1 + 3 \vec{Q}_2 = \begin{bmatrix} 0 \\ c_2 \end{bmatrix} \\
+-\vec{Q}_0 + 3 \vec{Q}_1 - 3 \vec{Q}_2 + \vec{Q}_3 = \begin{bmatrix} 0 \\ c_3 \end{bmatrix}
 \end{aligned}$$
 
-This is now a system of four linear equations where the unknowns---$$\vec{P}_0, \vec{P}_1, \vec{P}_2, \vec{P}_3$$---are vectors.
-We can easily solve this system by substitution to get:
+These are four equations in four unknowns again!
+This time, the unknowns are vectors, but we can just solve it two separate times---once for the top components, once bottom components.
+As before, we know this can be solved easily with a computer.
+So, we've solved all the sub-problems!
+It's time to string them together into a single solution.
+Bear with me here, because the solution is going to be pretty simple!
 
-$$\begin{aligned}
-& \vec{P}_0 = \vec{C}_0 \\
-& \vec{P}_1 = \vec{C}_0 + \frac{1}{3}\vec{C}_1 \\
-& \vec{P}_2 = \vec{C}_0 + \frac{2}{3}\vec{C}_1 + \frac{1}{3}\vec{C}_2 \\
-& \vec{P}_3 = \vec{C}_0 + \vec{C}_1 + \vec{C}_2 + \vec{C}_3
-\end{aligned}$$
-
-Now we'll put this back in terms of $$c_0, c_1, c_2, c_3$$ to get:
-
-$$\begin{aligned}
-& \vec{P}_0 = \begin{bmatrix} 0 \\ c_0 \end{bmatrix} \\
-& \vec{P}_1 = \begin{bmatrix} 1/3 \\ c_0 + 1/3 \ c_1 \end{bmatrix} \\
-& \vec{P}_2 = \begin{bmatrix} 2/3 \\ c_0 + 2/3 \ c_1 + 1/3 \ c_2 \end{bmatrix} \\
-& \vec{P}_3 = \begin{bmatrix} 1 \\ c_0 + c_1 + c_2 + c_3 \end{bmatrix}
-\end{aligned}$$
+## Putting Together the Solution
 
 {% include todo.html content="make connection to sample rate when discussing segment size" %}
