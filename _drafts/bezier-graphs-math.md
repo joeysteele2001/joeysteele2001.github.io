@@ -56,6 +56,59 @@ Next up, how do we get from $$g(u)$$ to $$\vec{Q}(t)$$?
 
 ## Approximating the Segment with a Cubic Polynomial
 
+We're going to split this sub-problem into two parts.
+First, let's take for granted that we can generate a cubic Bézier curve for any cubic polynomial.
+(That makes sense to me intuitively, since the equation for a cubic Bézier curve is basically a fancy cubic polynomial to begin with.)
+Now, all we need to do is find a cubic polynomial that's a "good fit" for $$g(u)$$.
+
+What is a "good fit" then?
+Well, that's a subjective question, despite this being a mathematical venture.
+The math will be valid regardless of what we choose.
+So let's choose what qualities we want our approximation to have.
+
+Since this is a visual graph, the endpoints should be exactly right.
+If we don't have this, then we're no better off than when we connected with straight lines!
+Next, there's one more property that should be very useful:
+in order to keep the graph from having sharp edges at the ends of each segment, let's make the *slopes* of the approximation match the actual function at the endpoints.
+If you've ever worked with Taylor series, we're essentially using the same reasoning here, just approximating about two points instead of one.
+
+And believe it or not, those conditions are enough to find a unique cubic polynomial, so let's go on!
+
+Let's get more mathematical.
+Give the label $$c(u)$$ to the cubic polynomial that's approximating $$g(u)$$.
+The coefficients of the polynomial are defined as:
+
+$$c(u) = c_0 + c_1 u + c_2 u^2 + c_3 u^3$$
+
+To find a matching cubic polynomial, we just have to find the right values for $$c_0$$, $$c_1$$, $$c_2$$, and $$c_3$$.
+
+We know that we have four conditions (two for the left edge of the segment, and two for the right).
+Let's express them mathematically.
+For the endpoints to match:
+
+$$c(0) = g(0);\quad c(1) = g(1)$$
+
+For the slopes to match at the endpoints:
+
+$$c'(0) = g'(0);\quad c'(1) = g'(1)$$
+
+where $$c'(u)$$ and $$g'(u)$$ are the derivatives of $$c$$ and $$g$$ with respect to $$u$$.
+Also, using calculus, we find that $$c'(u) = c_1 + 2 c_2 u + 3 c_3 u^2$$.
+Evaluating all the left terms in the conditions, we get:
+
+$$\begin{gathered}
+c(0)    &=& c_0                     &=& g(0) \\
+c'(0)   &=& c_1                     &=& g'(0) \\
+c(1)    &=& c_0 + c_1 + c_2 + c_3   &=& g(1) \\
+c'(1)   &=& c_1 + 2 c_2 + 3 c_3     &=& g'(1)
+\end{gathered}$$
+
+These are now four linear equations in four unknowns (since we already know how to evaluate $$g(u)$$ and $$g'(u)$$).
+We aren't going to solve it here though.
+As we'll see later, computers can easily do that part for us by using some linear algebra.
+So for now, let's take for granted that we *can* solve for the values of $$c_0$$, $$c_1$$, $$c_2$$, and $$c_3$$.
+In other words, we've found the cubic polynomial $$c(u)$$ that "best" fits $$g(u)$$, and we can continue with the second half of this sub-problem.
+
 ## Matching the Cubic Polynomial with a Bézier Curve
 
 ## The Setup
