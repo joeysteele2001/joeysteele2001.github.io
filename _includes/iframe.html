@@ -1,0 +1,3 @@
+<iframe src="{{ include.src }}" {% if include.id %} id=" {{ include.id }}" {% endif %}{% if include.width %}
+    width="{{ include.width }}" {% endif %}{% if include.height %} height="{{ include.height }}" {% endif %}
+    style="display:block;border:none;max-width:100%;{% if include.centered %}margin:auto;{% endif %}"></iframe>

@@ -385,6 +385,22 @@ $$
 
 ### Interpreting the Control Points
 
-[wolfram]: https://www.wolframalpha.com/input?i2d=true&i=invert%5C%2840%29%7B%7B1%2C0%2C0%2C0%7D%2C%7B-3%2C3%2C0%2C0%7D%2C%7B3%2C-6%2C3%2C0%7D%2C%7B-1%2C3%2C-3%2C1%7D%7D%5C%2841%29*invert%5C%2840%29%7B%7B1%2C0%2C0%2C0%7D%2C%7B0%2C1%2C0%2C0%7D%2C%7B1%2C1%2C1%2C1%7D%2C%7B0%2C1%2C2%2C3%7D%7D%5C%2841%29
+The expressions for the control points look a bit complicated.
+But intuitively, they're pretty straightforward.
+The points $$\vec{P}_0$$ and $$\vec{P}_3$$ just lie on the endpoints of the segment, as intended.
+The other two control points are evenly spaced horizontally, and lie on the tangent line to the graph at their respective endpoints.
+So, $$\vec{P}_1$$ lies on the line tangent to the graph at $$\vec{P}_0$$.
 
-{% include todo.html content="make connection to sample rate when discussing segment size" %}
+This is much better explained visually.
+I've prepared a Desmos graph where you can change the values of $$x_0$$ and $$x_1$$.
+The black dashed line is the original function, and the blue solid line is the approximated Bézier curve for the segment.
+The green "x" marks are the control points along the purple dotted tangent lines.
+
+{% include iframe.html src="https://www.desmos.com/calculator/pbfbhzor7u?embed" width=500 height=500 centered=true %}
+
+One important note: you'll see that the approximation becomes very inaccurate if you move $$x_0$$ and $$x_1$$ too far apart.
+This is actually a consequence of the [(Nyquist-Shannon) Sampling Theorem][nyquist].
+Essentially, the distance between $$x_0$$ and $$x_1$$ can't be more than half of the wavelength.
+
+[wolfram]: https://www.wolframalpha.com/input?i2d=true&i=invert%5C%2840%29%7B%7B1%2C0%2C0%2C0%7D%2C%7B-3%2C3%2C0%2C0%7D%2C%7B3%2C-6%2C3%2C0%7D%2C%7B-1%2C3%2C-3%2C1%7D%7D%5C%2841%29*invert%5C%2840%29%7B%7B1%2C0%2C0%2C0%7D%2C%7B0%2C1%2C0%2C0%7D%2C%7B1%2C1%2C1%2C1%7D%2C%7B0%2C1%2C2%2C3%7D%7D%5C%2841%29
+[nyquist]: https://en.wikipedia.org/wiki/Nyquist%E2%80%93Shannon_sampling_theorem
