@@ -1,6 +1,10 @@
-BUILD-FLAGS = --drafts --incremental --future
-SERVE-FLAGS = $(BUILD-FLAGS)
+BUILD_FLAGS = --drafts --future
+SERVE_FLAGS = $(BUILD_FLAGS)
 ENV_VARIABLES = JEKYLL_ENV=development
+
+ifdef incremental
+BUILD_FLAGS += --incremental
+endif
 
 .PHONY: all
 all: build
