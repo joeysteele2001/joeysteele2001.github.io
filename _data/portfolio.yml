@@ -1,8 +1,11 @@
 - name: Electronic Music Synthesis From Scratch
   date: Summer 2022
   description: I am currently developing a performant, real-time modular electronic music synthesizer using the Rust programming language.
-    It will include a module for audio spatialization (currently using a mixture of vector- and distance- based amplitude positioning), able to output to an arbitrary number of loudspeakers.
+    It will include a module for audio spatialization (likely using a mixture of vector- and distance- based amplitude positioning), able to output to an arbitrary number of loudspeakers.
     I have also tied in ideas from programming language development for use in processing the modules.
+  documentation: 
+    - My git repository is not yet public as this project is still in-progress.
+    - I will likely make a couple blog posts about it in the near future.
   techs:
   - Rust (programming language)
   - Real-time audio
