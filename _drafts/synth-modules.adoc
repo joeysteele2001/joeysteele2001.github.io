@@ -1,0 +1,19 @@
+= Synth Modules
+:author: Joey Steele
+:docdate: 2022-07-29
+
+Hello world!
+
+// TODO: better title
+
+== The Setup
+=== The problem
+== Graphs
+=== Module dependency
+=== Edge weights
+== Ordering
+=== Instructions
+== Buffer Allocation
+=== Algorithm 1: simple but inefficient
+=== Algorithm 2: liveness and graph coloring
+== Result
