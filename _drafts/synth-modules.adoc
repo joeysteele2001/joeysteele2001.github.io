@@ -2,9 +2,23 @@
 :author: Joey Steele
 :docdate: 2022-07-29
 
+// URLs
+:url-scratch: https://scratch.mit.edu/
+
 Hello world!
 
 // TODO: better title
+
+This summer, I have been making a digital modular synthesizer (_almost_) from scratch.
+It'll run on the command-line, able to play music out of speakers in real-time and write out to an audio file.
+Now when I say _from scratch_, I don't mean {url-scratch}[the block-based programming environment].
+I'm writing all of the interesting audio and signal-processing code myself.
+
+One part of the core of this synthesizer is the _executor_.
+Its job is to run all the signal-processing code and hand off the output.
+This article lays out how I *SUMMARY*
+// TODO: summary of article in that last sentence
+, tying in concepts from programming language development in the process.
 
 == The Setup
 === The problem
