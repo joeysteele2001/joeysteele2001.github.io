@@ -2,11 +2,29 @@
 :author: Joey Steele
 :docdate: 2022-07-29
 
+:imagesdir: /assets/img
+
 // URLs
 :url-scratch: https://scratch.mit.edu/
 
+// Figures
+:figextension: webp
+:fig-basic-patch: basic-patch.{figextension}
+:fig-graph-plain: graph-plain.{figextension}
+:fig-graph-weights: graph-weights.{figextension}
+:fig-graph-vbuffers: graph-vbuffers.{figextension}
+:fig-graph-pbuffers: graph-pbuffers.{figextension}
+:fig-basic-patch-bufs: basic-patch-bufs.{figextension}
+
+// Notes
+:fn-module-atomic-text: pass:c,q[In this sense, _atomic_ means that the module carries out all its computations in one unconditional step, and is expected to terminate its computation in a finite (and "`short`", relatively speaking) amount of time. \
+Modules may carry out as many computations as needed, and nothing in this definition precludes modules from being executed in parallel as possible.]
+
+:fn-module-atomic: footnote:module-atomic[{fn-module-atomic-text}]
+
 Hello world!
 
+// TODO: add enticing summary in place of "Hello world"
 // TODO: better title
 
 This summer, I have been making a digital modular synthesizer (_almost_) from scratch.
@@ -21,7 +39,70 @@ This article lays out how I *SUMMARY*
 , tying in concepts from programming language development in the process.
 
 == The Setup
+
+Just like the original analog modular synths, all sound processing in my synthesizer happens inside of _modules_.
+Each module has a specific purpose, such as generating a sound wave, filtering out high frequencies, mixing sounds together, etc.
+Modules can send signals to the outside world through _output terminals_, and receive signals through _input terminals_.
+By connecting multiple modules together in this way, we can create a huge variety of timbres with relatively little effort.
+
+image::{fig-basic-patch}[A basic example of a patch]
+
+All of the modules and connections together form a _patch_.
+The diagram above shows a simple patch that can play notes at different pitches (frequencies) and volumes (amplitudes).
+Don't worry if you don't understand what the modules are doing exactly.
+The important part is that each module has input and/or output terminals, and they're connected together through one-way paths.
+
+Now that we understand the way a patch is laid out, let's cover some technical details and terminology.
+Conceptually, a _signal_ in this synthesizer is just a list of numbers (called _samples_).
+As with pretty much all audio code, I'm processing audio signals in _blocks_, which last for a fixed number of samples (usually a power of 2, somewhere around 64 to 1024 samples long).
+A _buffer_ stores one block of one signal.
+So, each module processes one block at a time, reading from and storing into buffers.
+
+Because I want this synthesizer to be able to run in real-time, all audio processing code must run quickly, and _especially_ in a predictable amount of time.
+This means that modules and the executor need to pre-allocate all large chunks of memory up-front.
+In other words, the executor will hold onto a fixed number of buffers to re-use each block.
+
 === The problem
+
+But, how do we know what number of buffers are needed?
+And how do we manage which modules interact with which buffers?
+Also, we don't even know which module to execute when!
+
+This is the problem that we'll be solving.
+More precisely, I'll be showing:
+
+* how to find what *order* to execute the modules
+* how to *allocate* buffers to each module's input and output terminals
+
+I've written out the problem and some definitions more rigorously below.
+It shouldn't be necessary to read through it to understand what I'm doing, but it's there if you want to see.
+
+.The problem, in more detail (click to expand)
+[%collapsible]
+====
+
+First, a few definitions.
+
+Buffer:: the resource unit through which <<anchor-module,modules>> communicate
+
+Input terminal:: an interface by which a module can receive a buffer with read-only access
+
+Output terminal:: an interface by which a module can receive a buffer with write-only access
+
+[[anchor-module]]Module::
+a unit of computation,
+having a fixed number of input slots and output slots,
+which _processes_
+by reading from zero or more of its input buffers
+and writing to all its output buffers
+in one atomic step{fn-module-atomic}
+
+Source Module:: a module with zero input slots and at least one output slot
+
+Output Module:: a module with at least one input slot and zero output slots
+
+====
+
 == Graphs
 === Module dependency
 === Edge weights
