@@ -11,15 +11,15 @@ all: build
 
 .PHONY: build
 build:
-	$(ENV_VARIABLES) bundle exec jekyll build $(BUILD-FLAGS)
+	$(ENV_VARIABLES) bundle exec jekyll build $(BUILD_FLAGS)
 
 .PHONY: serve
 serve:
-	$(ENV_VARIABLES) bundle exec jekyll serve $(SERVE-FLAGS)
+	$(ENV_VARIABLES) bundle exec jekyll serve $(SERVE_FLAGS)
 
 .PHONY: serve-local
 serve-local:
-	$(ENV_VARIABLES) bundle exec jekyll serve $(SERVE-FLAGS) --host 0.0.0.0
+	$(ENV_VARIABLES) bundle exec jekyll serve $(SERVE_FLAGS) --host 0.0.0.0
 
 .PHONY: clean
 clean:
