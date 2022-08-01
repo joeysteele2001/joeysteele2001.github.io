@@ -125,6 +125,20 @@ before being read by all modules dependent upon that buffer?
 
 == Graphs
 === Module dependency
+
+We can use the lingo from graph theory to describe a patch!
+Every module is a node, and every connection between modules is an edge.
+Remembering our earlier example patch:
+
+image::{fig-basic-patch}[Example patch diagram]
+
+we can represent it as a graph:
+
+image::{fig-graph-plain}[Example patch as a graph]
+
+This graph doesn't tell us about which terminals connect to which -- only which modules _depend_ on which.
+But this already gives us all the information we need to put our modules in execution order.
+
 === Edge weights
 == Ordering
 === Instructions
