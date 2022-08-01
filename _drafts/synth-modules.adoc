@@ -101,6 +101,26 @@ Source Module:: a module with zero input slots and at least one output slot
 
 Output Module:: a module with at least one input slot and zero output slots
 
+Connection:: a path along which a signal flows from an output terminal into an input terminal which has no other connections
+
+Patch:: a set of modules, along with a set of valid connections among those modules
+
+Next, assume the following restrictions hold for a given patch:
+
+* for all input terminals, there exists exactly one connection terminating at that input terminal
+* there are no connections that form a cycle of modules
+* there exists at least one source module
+* there exists at least one output module
+
+Now the full problem statement:
+given a patch _P_,
+how can the modules be ordered such that
+for all modules _M_, upon processing _M_,
+all buffers associated with a connection to an input terminal of _M_ have already been written,
+and how can the buffers of _P_ be allocated such that
+no output buffer associated with a connection to an output terminal of _M_ is overwritten
+before being read by all modules dependent upon that buffer?
+
 ====
 
 == Graphs
