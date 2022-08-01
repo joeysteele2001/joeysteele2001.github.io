@@ -62,6 +62,15 @@ body {
     }
 }
 
+// asciidoc puts images in div.imageblock > div.content
+// but .content is already used for the content of a page, so we need to override
+.imageblock .content {
+    margin-top: inherit;
+    margin-bottom: inherit;
+    margin-left: auto;
+    margin-right: auto;
+}
+
 .nav-top {
     margin: 0;
     padding: 0;
