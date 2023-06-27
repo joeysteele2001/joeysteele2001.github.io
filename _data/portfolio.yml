@@ -1,66 +1,92 @@
-- name: Electronic Music Synthesis From Scratch
-  date: Summer 2022
-  description: I am currently developing a performant, real-time modular electronic music synthesizer using the Rust programming language.
-    It will include a module for audio spatialization (likely using a mixture of vector- and distance- based amplitude positioning), able to output to an arbitrary number of loudspeakers.
-    I have also tied in ideas from programming language development for use in processing the modules.
-  documentation: 
-    - My git repository is not yet public as this project is still in-progress.
-    - I will likely make a couple blog posts about it in the near future.
+# - name: Electronic Music Synthesis From Scratch
+#   date: Summer 2022
+#   description: I am currently developing a performant, real-time modular electronic music synthesizer using the Rust programming language.
+#     It will include a module for audio spatialization (likely using a mixture of vector- and distance- based amplitude positioning), able to output to an arbitrary number of loudspeakers.
+#     I have also tied in ideas from programming language development for use in processing the modules.
+#   documentation:
+#     - My git repository is not yet public as this project is still in-progress.
+#     - I will likely make a couple blog posts about it in the near future.
+#   techs:
+#   - Rust (programming language)
+#   - Real-time audio
+#   - Digital audio synthesis
+#   - Audio spatialization
+
+- name: Distributed Version Control in the Digital Audio Workstation
+  course: Senior Capstone Project
+  date: August 2022 - May 2023
+  description: |
+    In a group of two other students, we created a tool that enables musicians and producers to collaborate on projects in the REAPER Digital Audio Workstation using Git, a Version Control System.
+    This project consisted of the following elements:
+
+    * Extensive background research into the space of collaborative music production
+    * A Python library to parse and detect the differences in REAPER project files for displaying a "diff" view
+    * A plugin in REAPER that adds a user interface for Version Control commands (commit, checkout, merge, etc.)
+
+    My primary contributions lay in the research and diffing phases.
+  documentation:
+    - "[GitHub Repo](https://github.com/smissner/REAPERVersionController)"
   techs:
-  - Rust (programming language)
-  - Real-time audio
-  - Digital audio synthesis
-  - Audio spatialization
+    - Python
+    - Git (version control)
+    - User Interface design
+    - Parsing (recursive descent)
+    - Difference algorithms
+    - Tree algorithms
 
 - name: Cantio
   course: Project Studio Technology
   date: Fall 2021
-  description: With a group of two other students, we created Cantio, a web application that facilitates learning spoken and written foreign languages through music.
+  description:
+    With a group of two other students, we created Cantio, a web application that facilitates learning spoken and written foreign languages through music.
     This was completed during the Fall 2021 semester for the *Project Studio Technology* course.
   documentation:
-  - "[GitHub Repo](https://github.com/joeysteele2001/language-of-music)"
+    - "[GitHub Repo](https://github.com/joeysteele2001/language-of-music)"
   techs:
-  - Javascript
-  - Typescript
-  - Python
-  - React
-  - Beautiful Soup
+    - Javascript
+    - Typescript
+    - Python
+    - React
+    - Beautiful Soup
 
 - name: Moog Hackathon
   date: February 2021
-  description: I created the Phoenix Uke, a ukulele body modified to control a Moog Werkstatt synthesizer, with two other students.
+  description:
+    I created the Phoenix Uke, a ukulele body modified to control a Moog Werkstatt synthesizer, with two other students.
     Our project won third place in the hackathon.
   documentation:
-  - "[Project Video](https://youtu.be/bA1lbHErTJ4)"
-  - "[GitHub Repo](https://github.com/joeysteele2001/moog2021)"
+    - "[Project Video](https://youtu.be/bA1lbHErTJ4)"
+    - "[GitHub Repo](https://github.com/joeysteele2001/moog2021)"
   techs:
-  - Teensy (Arduino)
-  - C++
-  - Moog Werkstatt
-  - Analog synthesis
-  - Circuit design
-  - Soldering
+    - Teensy (Arduino)
+    - C++
+    - Moog Werkstatt
+    - Analog synthesis
+    - Circuit design
+    - Soldering
 
 - name: Modular Prelude in C
   course: Laptop Orchestra
   date: Spring 2020
-  description: I composed a piece of music written for a virtual instrument I designed from scratch in VCV Rack.
+  description:
+    I composed a piece of music written for a virtual instrument I designed from scratch in VCV Rack.
     I wrote the semi-unconventional visual score in LilyPond, a LaTeX-like programming language for music score engraving.
     This was completed in the second half of the Spring 2020 semester, immediately after the transition to online classes due to COVID.
-  documentation: 
-  - "[Project Video](https://youtu.be/GjICcyIbmm4)"
+  documentation:
+    - "[Project Video](https://youtu.be/GjICcyIbmm4)"
   techs:
-  - Music Composition
-  - VCV Rack (simulated modular synth)
-  - TouchOSC (mobile phone interface)
-  - LilyPond (musical score)
+    - Music Composition
+    - VCV Rack (simulated modular synth)
+    - TouchOSC (mobile phone interface)
+    - LilyPond (musical score)
 
 - name: Harpsichord Synthesizer
   course: Audio Technology I
   date: Fall 2020
-  description: I wrote a synthesizer that loosely models a harpsichord from scratch in PureData, a visual audio programming environment.
+  description:
+    I wrote a synthesizer that loosely models a harpsichord from scratch in PureData, a visual audio programming environment.
     This work was completed at the end of the Fall 2020 semester for the *Audio Technology I* course.
-  documentation: 
-  - "[Video of Project](https://youtu.be/w3vi4k1LeL8)"
+  documentation:
+    - "[Video of Project](https://youtu.be/w3vi4k1LeL8)"
   techs:
-  - PureData
+    - PureData

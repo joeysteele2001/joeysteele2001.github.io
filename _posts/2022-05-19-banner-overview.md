@@ -5,7 +5,7 @@ subtitle: Overview
 series-id: banner
 series-index: 1
 date: May 19, 2022
-published: true
+published: false
 ---
 
 For a while, I've wanted to increase my visibility online, especially professionally.
